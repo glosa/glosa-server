@@ -17,9 +17,9 @@ lein check-format
 
 ### Comments
 
-Get from `/best-SO/`.
+Get from `https://glosa.example/best-SO/`.
 
 ``` sh
 ;; GET
-/api/v1/comments/?url=/best-SO/
+/api/v1/comments/?url=https://glosa.example/best-SO/
 ```
