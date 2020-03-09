@@ -21,7 +21,9 @@
                  ;; Validations
                  [jkkramer/verily "0.6.0"]
                  ;; JSON encoding
-                 [cheshire "5.9.0"]]
+                 [cheshire "5.9.0"]
+                 ;; Yaml
+                 [clj-yaml "0.4.0"]]
   :plugins [;; DEV TOOLS
             [lein-environ "1.1.0" :hooks false]
             ;;; Check idiomatic bug
