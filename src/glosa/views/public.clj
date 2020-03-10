@@ -2,20 +2,18 @@
 (ns glosa.views.public
   (:require
    [tadam.templates :refer [render-JSON]]
-   [clj-yaml.core :as yaml]
+   [glosa.config :refer [config]]
    [glosa.ports.database :as database]))
-
-(def config (yaml/parse-string (slurp "config.yaml")))
 
 (defn is-valid-domain
   "Check if the request comes from a valid domain"
   [req]
-  (= (get-in req [:headers "host"]) (config :domain)))
+  (= (get-in req [:headers "host"]) (str (config :domain) ":" (config :port))))
 
 (defn get-comments
   "All comments from url"
   [req]
-  (render-JSON req (if (is-valid-domain req)(database/get-comments (-> req :params :url)) {})))
+  (render-JSON req (if (is-valid-domain req) (database/get-comments (-> req :params :url)) {})))
 
 (defn status-404
   "Page 404"

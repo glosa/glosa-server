@@ -1,6 +1,7 @@
 (ns glosa.core
   (:require
    [environ.core :refer [env]]
+   [glosa.config :refer [config]]
    [ring.middleware.params :refer [wrap-params]]
    [ring.middleware.defaults :refer [site-defaults wrap-defaults]]
    [ring.middleware.reload :refer [wrap-reload]]
@@ -20,6 +21,6 @@
 (defn -main [& args]
   ;; Main
   ;; Welcome
-  (prn (str "Open http://localhost:" (env :port)))
+  (prn (str "Open " (config :domain) ":" (config :port)))
   ;; Run web server
-  (run-jetty wrapped-handler {:port (Integer/parseInt (env :port))}))
+  (run-jetty wrapped-handler {:port (config :port)}))
