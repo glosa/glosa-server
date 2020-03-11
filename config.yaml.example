@@ -1,1 +1,3 @@
 domain: example.com
+port: 4000
+debug: true
