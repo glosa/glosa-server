@@ -9,12 +9,12 @@
 (defn db-save
   "Save database"
   [update-data]
-  (generate-stream update-data (clojure.java.io/writer (.getFile (io/resource db-path)))))
+  (generate-stream update-data (clojure.java.io/writer (.getFile db-path))))
 
 (defn db-load
   "Load database"
   []
-  (reset! db (parse-stream (clojure.java.io/reader (io/resource db-path)) true)))
+  (reset! db (parse-stream (clojure.java.io/reader db-path) true)))
 
 (db-load)
 

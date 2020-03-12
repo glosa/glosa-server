@@ -8,7 +8,8 @@
 
 (defroutes public
   ;; Urls public pages
-  (GET (str api-prefix "comments/") [] view-public/get-comments))
+  (GET (str api-prefix "comments/") [] view-public/get-comments)
+  (GET (str api-prefix "captcha/") [] view-public/get-captcha))
 
 (defroutes resources-routes
   ;; Resources (statics)

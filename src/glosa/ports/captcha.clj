@@ -2,10 +2,10 @@
   (:require
    [glosa.adapters.captcha.time :as adapter]))
 
-(defn generate-token
+(defn get-token
   "Generates a token to validate"
   []
-  (adapter/generate-token))
+  (adapter/get-token))
 
 (defn check-token
   "Check token is valid"

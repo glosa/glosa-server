@@ -8,10 +8,13 @@
 (defn db-load
   "Load database"
   []
-  (parse-stream (clojure.java.io/reader (io/resource db-path)) true))
+  ;; Generate file if not exist
+  (if-not (.exists (io/file db-path)) (clojure.java.io/writer db-path))
+  ;; Get JSON
+  (parse-stream (clojure.java.io/reader db-path) true))
 
 (def db (atom (db-load)))
-(def token-len 10)
+(def token-len 20)
 (def min-time-seconds 20)
 
 (defn rand-str
@@ -27,26 +30,26 @@
 (defn db-save
   "Save database"
   [update-data]
-  (generate-stream update-data (clojure.java.io/writer (.getFile (io/resource db-path)))))
+  (prn "unaa")
+  (generate-stream update-data (clojure.java.io/writer db-path)))
 
 (defn add-token-db
-  "Add token to database"
-  [token]
-  (doall
-    (reset! db (conj @db {:token token :createdAt (get-unixtime-now)}))
-    (db-save @db)))
+"Add token to database"
+[token]
+(doall
+  (reset! db (conj @db {:token token :createdAt (get-unixtime-now)}))
+  (db-save @db)))
 
-(defn generate-token
-  "Generates a token to validate"
-  []
-  (let [new-token (rand-str token-len)]
-    (doall
-      (add-token-db new-token)
-      new-token)))
+(defn get-token
+"Generates a token to validate"
+[]
+(let [new-token (rand-str token-len)] ;; New token
+  (doall
+    (add-token-db new-token) ;; Save in database
+    new-token ;; Return token
+    )))
 
 (defn check-token
-  "Check token is valid"
-  [token]
-  true
-  )
-
+"Check token is valid"
+[token]
+true)

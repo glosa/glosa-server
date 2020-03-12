@@ -2,3 +2,6 @@ target/
 
 resources/db.json
 config.yaml
+.lein-repl-history
+captcha.json
+db.json
