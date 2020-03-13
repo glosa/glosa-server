@@ -48,14 +48,17 @@
     (db-save @db)))
 
 (defn get-token
-"Generates a token to validate"
-[]
-(let [new-token (rand-str token-len)] ;; New token
-  (add-token-db new-token) ;; Save in database
-  new-token ;; Return token
-  ))
+  "Generates a token to validate"
+  []
+  (let [new-token (rand-str token-len)] ;; New token
+    ;; Multi threading
+    (doto (Thread. (fn []
+                     (add-token-db new-token) ;; Save in database
+                     )) .start)
+    new-token ;; Return token
+    ))
 
 (defn check-token
-"Check token is valid"
-[token]
-true)
+  "Check token is valid"
+  [token]
+  (some (fn [item] (and (= (item :token) token) (> (item :createdAt (get-unixtime-now)) min-time-seconds))) @db))
