@@ -2,6 +2,7 @@
 (ns glosa.views.public
   (:require
    [tadam.templates :refer [render-JSON]]
+   [tadam.utils :refer [get-JSON]]
    [cheshire.core :refer [parse-string]]
    [glosa.config :refer [config]]
    [glosa.ports.database :as database]
@@ -25,14 +26,14 @@
   ;; Remove token
   ;; Save comment
   ;; Return
-  (def temp ((parse-string (slurp (-> req :body)) true) :token))
-  (if (captcha/check-token temp)
-    (let []
-      (render-JSON req {:status 200})
+  (let [my-json (get-JSON req)]
+    (if (captcha/check-token (:token my-json))
+      (let []
+        (render-JSON req {:status 200})
+        )
+      (render-JSON req {:status 401})
       )
-    (render-JSON req {:status 401})
-    )
-  )
+    ))
 
 (defn get-captcha
   "Get token captcha"
