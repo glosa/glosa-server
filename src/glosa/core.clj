@@ -12,7 +12,7 @@
 (def wrapped-handler
   ;; Handler middlewares
   (-> all-routes
-      (wrap-defaults (assoc site-defaults [:security :anti-forgery] true))
+      (wrap-defaults (assoc-in site-defaults [:security :anti-forgery] false))
       wrap-params
       wrap-session
       (#(if (env :debug) (wrap-reload %)))))

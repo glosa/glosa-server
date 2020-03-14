@@ -59,6 +59,7 @@
     ))
 
 (defn check-token
-  "Check token is valid"
+  "Check token is valid. Token exist and createdAt minor min-time-seconds"
   [token]
-  (some (fn [item] (and (= (item :token) token) (> (item :createdAt (get-unixtime-now)) min-time-seconds))) @db))
+  (let [now (get-unixtime-now)]
+    (some (fn [item] (and (= (item :token) token) (< (+ (item :createdAt now) min-time-seconds) now))) @db)))

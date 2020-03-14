@@ -1,6 +1,6 @@
 (ns glosa.urls
   (:require
-   [compojure.core :refer [defroutes GET]]
+   [compojure.core :refer [defroutes GET POST]]
    [compojure.route :as route]
    [glosa.views.public :as view-public]))
 
@@ -9,6 +9,7 @@
 (defroutes public
   ;; Urls public pages
   (GET (str api-prefix "comments/") [] view-public/get-comments)
+  (POST (str api-prefix "comments/") [] view-public/add-comment)
   (GET (str api-prefix "captcha/") [] view-public/get-captcha))
 
 (defroutes resources-routes
