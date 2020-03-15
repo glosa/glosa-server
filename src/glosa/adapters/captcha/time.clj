@@ -63,6 +63,8 @@
 (defn check-token
   "Check token is valid. Token exist and createdAt minor min-time-seconds"
   [token url]
-  (let [now (utils/get-unixtime-now)]
+  (let [now   (utils/get-unixtime-now)
+        valid (some (fn [item] (and (= (item :token) token) (< (+ (item :createdAt now) min-time-seconds) now) (= (item :url) url))) @db)]
+    (if valid (reset! db (filter (fn [item] (not= (:token item) token)) @db))) ;; Remove token
     (clear-tokens-old)
-    (some (fn [item] (and (= (item :token) token) (< (+ (item :createdAt now) min-time-seconds) now) (= (item :url) url))) @db)))
+    valid))
