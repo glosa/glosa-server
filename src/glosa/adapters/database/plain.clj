@@ -11,7 +11,7 @@
 (defn db-save
   "Save database"
   [update-data]
-  (generate-stream update-data (clojure.java.io/writer (.getFile db-path))))
+  (generate-stream update-data (clojure.java.io/writer db-path)))
 
 (defn db-load
   "Load database"
@@ -28,12 +28,7 @@
 (defn get-new-id
   "Generate a new id by finding out which is the highest id and uploading one"
   []
-  (+ 1 (reduce (fn [id item]
-                 (if (< id (:id item))
-                   (:id item)
-                   id
-                   ))
-               0 @db)))
+  (+ 1 (reduce (fn [id item] (if (< id (:id item)) (:id item) id)) 0 @db)))
 
 (defn add-comment
   "Add new comment"
@@ -42,5 +37,6 @@
     (let
         [update-db (conj @db {:id (get-new-id) :parent parent :createdAt (utils/get-unixtime-now) :thread thread :author author :message message})]
       (reset! db update-db)
+      (db-save @db)
       true)
     false))
