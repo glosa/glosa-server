@@ -25,15 +25,22 @@
   [url]
   (sort-by :createdAt (filter #(= (:thread %) url) @db)))
 
+(defn get-new-id
+  "Generate a new id by finding out which is the highest id and uploading one"
+  []
+  (+ 1 (reduce (fn [id item]
+                 (if (< id (item :id))
+                   (item :id)
+                   id
+                   ))
+               @db)))
+
 (defn add-comment
   "Add new comment"
   [parent author message token thread]
-  (let [id  1
+  (let [id  4
         now utils/get-unixtime-now]
-    (if (captcha/check-token token thread)
-      
-      true 
-      )
+    (captcha/check-token token thread)
     )
   )
 

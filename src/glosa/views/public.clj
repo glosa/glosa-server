@@ -30,6 +30,7 @@
 
     (render-JSON req {:status 401})))
 
+
 (defn get-captcha
   "Get token captcha"
   [req]

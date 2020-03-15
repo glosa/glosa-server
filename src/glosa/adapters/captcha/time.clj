@@ -65,4 +65,4 @@
   [token url]
   (let [now (utils/get-unixtime-now)]
     (clear-tokens-old)
-    (some (fn [item] (and (= (item :token) token) (< (+ (item :createdAt now) min-time-seconds) now) (= item :url url))) @db)))
+    (some (fn [item] (and (= (item :token) token) (< (+ (item :createdAt now) min-time-seconds) now) (= (item :url) url))) @db)))
