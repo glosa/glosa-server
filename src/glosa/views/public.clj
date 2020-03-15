@@ -20,16 +20,12 @@
 (defn add-comment
   "Add new comment"
   [req]
-  ;; Save comment
-  ;; Return
   (if (is-valid-domain req)
     (let [my-json (get-JSON req)]
       (if (database/add-comment (:parent my-json) (:author my-json) (:message my-json) (:token my-json) (:thread my-json))
         (render-JSON req {:status 200})
         (render-JSON req {:status 401})))
-
     (render-JSON req {:status 401})))
-
 
 (defn get-captcha
   "Get token captcha"

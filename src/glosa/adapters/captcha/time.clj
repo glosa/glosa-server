@@ -1,6 +1,7 @@
 (ns glosa.adapters.captcha.time
   (:require
    [glosa.models.utils :as utils]
+   [clojure.string :as string]
    [cheshire.core :refer [generate-stream parse-stream]]
    [clojure.java.io :as io]))
 
@@ -20,12 +21,12 @@
 (def token-len 20)
 (def min-time-seconds 20)
 
-;; Functions 
+;; Functions
 
 (defn rand-str
   "Generate random string"
   [len]
-  (apply str (take len (repeatedly #(char (+ (rand 26) 65))))))
+  (string/join (repeatedly len #(char (+ (rand 26) 65)))))
 
 (defn db-save
   "Save database"

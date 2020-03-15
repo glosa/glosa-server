@@ -28,14 +28,13 @@
 (defn get-new-id
   "Generate a new id by finding out which is the highest id and uploading one"
   []
-  (+ 1 (reduce (fn [id item] (if (< id (:id item)) (:id item) id)) 0 @db)))
+  (inc (reduce (fn [id item] (if (< id (:id item)) (:id item) id)) 0 @db)))
 
 (defn add-comment
   "Add new comment"
   [parent author message token thread]
   (if (captcha/check-token token thread)
-    (let
-        [update-db (conj @db {:id (get-new-id) :parent parent :createdAt (utils/get-unixtime-now) :thread thread :author author :message message})]
+    (let [update-db (conj @db {:id (get-new-id) :parent parent :createdAt (utils/get-unixtime-now) :thread thread :author author :message message})]
       (reset! db update-db)
       (db-save @db)
       true)
