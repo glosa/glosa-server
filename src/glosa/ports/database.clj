@@ -9,5 +9,5 @@
 
 (defn add-comment
   "Add new comment"
-  [url parent author message]
-  (adapter/add-comment url parent author message))
+  [parent author message token thread]
+  (adapter/add-comment parent author message token thread))

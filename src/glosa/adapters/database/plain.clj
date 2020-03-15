@@ -1,5 +1,7 @@
 (ns glosa.adapters.database.plain
   (:require
+   [glosa.ports.captcha :as captcha]
+   [glosa.models.utils :as utils]
    [cheshire.core :refer [generate-stream parse-stream]]
    [clojure.java.io :as io]))
 
@@ -25,5 +27,13 @@
 
 (defn add-comment
   "Add new comment"
-  [url parent author message])
+  [parent author message token thread]
+  (let [id  1
+        now utils/get-unixtime-now]
+    (if (captcha/check-token token thread)
+      
+      true 
+      )
+    )
+  )
 

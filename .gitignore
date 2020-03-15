@@ -5,3 +5,4 @@ config.yaml
 .lein-repl-history
 captcha.json
 db.json
+.nrepl-port

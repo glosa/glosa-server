@@ -3,7 +3,6 @@
   (:require
    [tadam.templates :refer [render-JSON]]
    [tadam.utils :refer [get-JSON]]
-   [cheshire.core :refer [parse-string]]
    [glosa.config :refer [config]]
    [glosa.ports.database :as database]
    [glosa.ports.captcha :as captcha]))
@@ -21,25 +20,20 @@
 (defn add-comment
   "Add new comment"
   [req]
-  ;; Get params
-  ;; Check token
-  ;; Remove token
   ;; Save comment
   ;; Return
-  (let [my-json (get-JSON req)]
-    (if (captcha/check-token (:token my-json))
-      (let []
+  (if (is-valid-domain req)
+    (let [my-json (get-JSON req)]
+      (if (database/add-comment (:parent my-json) (:author my-json) (:message my-json) (:token my-json) (:thread my-json))
         (render-JSON req {:status 200})
-        )
-      (render-JSON req {:status 401})
-      )
-    ))
+        (render-JSON req {:status 401})))
+
+    (render-JSON req {:status 401})))
 
 (defn get-captcha
   "Get token captcha"
   [req]
-  (render-JSON req (if (is-valid-domain req) (assoc {} :token (captcha/get-token)) {:status 401})))
-
+  (render-JSON req (if (is-valid-domain req) (assoc {} :token (captcha/get-token (-> req :params :url))) {:status 401})))
 
 (defn status-404
   "Page 404"

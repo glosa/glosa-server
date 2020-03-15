@@ -4,10 +4,10 @@
 
 (defn get-token
   "Generates a token to validate"
-  []
-  (adapter/get-token))
+  [url]
+  (adapter/get-token url))
 
 (defn check-token
   "Check token is valid"
-  [token]
-  (adapter/check-token token))
+  [token url]
+  (adapter/check-token token url))
