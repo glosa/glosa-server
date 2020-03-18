@@ -16,6 +16,9 @@
 (defn db-load
   "Load database"
   []
+  ;; Generate file if not exist
+  (if-not (.exists (io/file db-path)) (clojure.java.io/writer db-path))
+  ;; Get JSON
   (reset! db (parse-stream (clojure.java.io/reader db-path) true)))
 
 (db-load)

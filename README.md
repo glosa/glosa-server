@@ -6,6 +6,12 @@
 lein run
 ```
 
+## Install
+
+```sh
+cp config.yaml.example config.yaml
+```
+
 ## Testing
 
 ``` sh
