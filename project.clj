@@ -39,4 +39,5 @@
             "check-format"    ["cljfmt" "check"]}
   ;; LEIN
   :main ^:skip-aot glosa.core
+  :aot  [glosa.core]
   :repl-options {:init-ns glosa.core})
