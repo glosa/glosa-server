@@ -6,6 +6,10 @@
    <strong >Clone of Disqus, but faster, Opensource and sexy.</strong>
 </p>
 
+## Amazing reasons to use it
+
+- 
+
 ## Usage
 
 Download Glosa.
@@ -75,6 +79,16 @@ Get from `https://glosa.example/best-SO/`.
 ### Add Comment
 
 ### Get captcha token
+
+---
+
+## Import from Disqus
+https://github.com/tanrax/glosa-disqus-import
+
+---
+
+## Connect with your site (HTML and Javascript)
+https://github.com/tanrax/glosa-cli
 
 ---
 
