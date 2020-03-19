@@ -1,5 +1,13 @@
 # Glosa
 
+<p align="center">
+  <img src="logo.png" alt="logo" width="200"> 
+</p>
+<h1 align="center">Comments for static sites.</h1>
+<p align="center">
+   <strong >Clone of Disqus, but faster, Opensource and sexy.</strong>
+</p>
+
 ## Usage
 
 ```sh
