@@ -81,7 +81,7 @@ Gets all the comments on one page.
 |---|---|
 | url  | string |
 
-Example.
+#### Example
 
 Get from `https://glosa.example/best-SO/`.
 
@@ -90,7 +90,28 @@ Get from `https://glosa.example/best-SO/`.
 /api/v1/comments/?url=https://glosa.example/best-SO/
 ```
 
-Response.
+#### Response
+
+``` json
+[
+    {
+        "id": 4812781236,
+        "parent": "",
+        "createdAt": 1584266634,
+        "thread": "https://glosa.example/best-SO/",
+        "author": "Lexar",
+        "message": "Do you use Glosa too? It's an amazing technology."
+    },
+    {
+        "id": 4812781237,
+        "parent": "",
+        "createdAt": 1584266746,
+        "thread": "https://glosa.example/best-SO/",
+        "author": "Lucia",
+        "message": "I love the article."
+    }
+]
+```
 
 ### Add Comment
 
