@@ -87,13 +87,13 @@ GET: Gets all the comments on one page.
 
 #### Example
 
-``` sh
-localhost/api/v1/comments/?url=https://glosa.example/best-SO/
-```
-
 Get from `https://glosa.example/best-SO/`.
 
-#### Response
+``` sh
+curl 'http://programadorwebvalencia.localhost:4000/api/v1/comments/?url=https://glosa.example/best-SO/'
+```
+
+#### Success response
 
 ``` json
 [
@@ -116,9 +116,15 @@ Get from `https://glosa.example/best-SO/`.
 ]
 ```
 
+#### Fail response
+
+``` json
+[]
+```
+
 ### Add Comment
 
-POST: Add new comment on one page.
+POST: Add new comment on one page. After saving the comment the token will no longer be valid.
 
 ``` sh
 /api/v1/comments/?url={url}
@@ -134,13 +140,19 @@ POST: Add new comment on one page.
 
 #### Example
 
-``` sh
-localhost/api/v1/comments/?url=https://glosa.example/best-SO/
-```
-
 Save comment from `https://glosa.example/best-SO/`.
 
-#### Response
+``` sh
+curl -H "Content-type: application/json" -d '{
+	"parent": "",
+	"token": "VRJUOBBMTKFQUAFZOKJG",
+	"author": "Juana",
+	"message": "I like it very much.",
+	"thread":"https://glosa.example/best-SO/"
+}' 'http://glosa.example:4000/api/v1/comments/'
+```
+
+#### Success response
 
 ``` json
 {
@@ -148,6 +160,14 @@ Save comment from `https://glosa.example/best-SO/`.
 }
 ```
 
+#### Fail response
+
+
+``` json
+{
+    "status": 401
+}
+```
 
 ### Get captcha token
 
