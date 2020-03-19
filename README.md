@@ -20,6 +20,8 @@ Run.
 java -jar glosa.jar
 ```
 
+🎉 Great 🎉. You already have your 🔥 own comment server🔥.
+
 ## Install
 
 ``` sh
