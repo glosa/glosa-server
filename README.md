@@ -90,7 +90,7 @@ GET: Gets all the comments on one page.
 Get from `https://glosa.example/best-SO/`.
 
 ``` sh
-curl 'http://programadorwebvalencia.localhost:4000/api/v1/comments/?url=https://glosa.example/best-SO/'
+curl 'https://programadorwebvalencia.localhost:4000/api/v1/comments/?url=https://glosa.example/best-SO/'
 ```
 
 #### Success response
@@ -149,7 +149,7 @@ curl -H "Content-type: application/json" -d '{
 	"author": "Juana",
 	"message": "I like it very much.",
 	"thread":"https://glosa.example/best-SO/"
-}' 'http://glosa.example:4000/api/v1/comments/'
+}' 'https://glosa.example:4000/api/v1/comments/'
 ```
 
 #### Success response
@@ -170,6 +170,41 @@ curl -H "Content-type: application/json" -d '{
 ```
 
 ### Get captcha token
+
+GET: Get a token to validate that a new comment can be created. It has only one use. It must also be obtained 20 seconds before use or it will not work.
+
+``` sh
+/api/v1/captcha/?url={url}
+```
+
+| Param | Value  | Description |
+|---|---|---|
+| url  | string | Page where you want to save the comment. |
+
+#### Example
+
+Get token for page `https://glosa.example/best-SO/`.
+
+``` sh
+curl 'https://glosa.example:4000/api/v1/captcha/?url=https://glosa.example/best-SO/'
+```
+
+#### Success response
+
+``` json
+{
+    "token": "ZRFOKXLALKNPOJPYJLVY"
+}
+```
+
+#### Fail response
+
+
+``` json
+{
+    "token": ""
+}
+```
 
 ---
 
