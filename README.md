@@ -8,7 +8,13 @@
 
 ## Amazing reasons to use it
 
-- 
+- Only 2ms to respond.
+- No database.
+- Configuration in a simple YAML.
+- Easy to import from Disqus.
+- Captcha system included.
+- Easy to integrate with static pages.
+- Opensource.
 
 ## Usage
 
@@ -69,12 +75,22 @@ lein check-format
 
 ### Get Comments
 
+Gets all the comments on one page.
+
+| Param | Value  |
+|---|---|
+| url  | string |
+
+Example.
+
 Get from `https://glosa.example/best-SO/`.
 
 ``` sh
-;; GET
+
 /api/v1/comments/?url=https://glosa.example/best-SO/
 ```
+
+Response.
 
 ### Add Comment
 
