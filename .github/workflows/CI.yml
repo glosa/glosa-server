@@ -26,9 +26,10 @@ jobs:
     - name: Dist jar
       run: |
             mkdir -p dist
+            rm -r dist/*
             cp target/*.jar dist
             git config user.email "action@github.com"
             git config user.name "GitHub Action"
-            git add dist
+            git add -f dist
             git commit -m 'Update dist'
             git push origin master
