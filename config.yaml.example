@@ -9,3 +9,4 @@ smtp-host: smtp.example.com
 smtp-user: smtpuser
 smtp-password: smtppassword
 smtp-port: 25
+smtp-tls: true

@@ -1,6 +1,5 @@
 (ns glosa.core
   (:require
-   [environ.core :refer [env]]
    [glosa.config :refer [config]]
    [ring.middleware.params :refer [wrap-params]]
    [ring.middleware.defaults :refer [site-defaults wrap-defaults]]
@@ -15,7 +14,7 @@
       (wrap-defaults (assoc-in site-defaults [:security :anti-forgery] false))
       wrap-params
       wrap-session
-      (#(if (env :debug) (wrap-reload %)))))
+      (#(if (config :debug) (wrap-reload %)))))
 
 (defn -main [& args]
   ;; Main

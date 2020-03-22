@@ -7,8 +7,6 @@
                  [org.clojure/clojure "1.10.1"]
                  ;; Tadam core
                  [tadam-core "0.3.4"]
-                 ;; Managing environment settings
-                 [environ "1.1.0"]
                  ;; HTTP Server
                  [ring "1.7.1"]
                  ;; Ring middleware that prevents CSRF attacks
@@ -27,13 +25,10 @@
                  ;; SMTP
                  [com.draines/postal "2.0.3"]]
   :plugins [;; DEV TOOLS
-            [lein-environ "1.1.0" :hooks false]
             ;;; Check idiomatic bug
             [lein-kibit "0.1.7"]
             ;;; Check format
-            [lein-cljfmt "0.6.4"]
-            ;;; Generate documentation
-            [lein-codox "0.10.7"]]
+            [lein-cljfmt "0.6.4"]]
   ;; Map configuration for Ring
   :ring {:handler glosa.core.wrapped-handler}
   ;; ALIAS
@@ -41,5 +36,5 @@
             "check-format"    ["cljfmt" "check"]}
   ;; LEIN
   :main ^:skip-aot glosa.core
-  ;:aot  [glosa.core]
+  :aot  [glosa.core]
   :repl-options {:init-ns glosa.core})

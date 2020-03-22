@@ -25,16 +25,14 @@
     (let [my-json (get-JSON req)]
       (if (database/add-comment (:parent my-json) (:author my-json) (:message my-json) (:token my-json) (:thread my-json))
         (do
-          (notify/send "new messageeeeeeee")
-          (render-JSON req {:status 200})
-          )
+          (notify/send (format "Author: %s\nMessage: %s\nThread: %s" (:author my-json) (:message my-json) (:thread my-json)))
+          (render-JSON req {:status 200}))
         (render-JSON req {:status 401})))
     (render-JSON req {:status 401})))
 
 (defn get-captcha
   "Get token captcha"
   [req]
-  (prn "hi")
   (render-JSON req (if (is-valid-domain req) (assoc {} :token (captcha/get-token (-> req :params :url))) {:status 401})))
 
 (defn status-404

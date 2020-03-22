@@ -6,7 +6,12 @@
 (defn send
   "Send email"
   [message]
-  (send-message {:from    (config :from)
+  (send-message {:host (config :smtp-host)
+                 :user (config :smtp-user)
+                 :pass (config :smtp-password)
+                 :port (config :smtp-port)
+                 :tls  (config :smtp-tls)}
+                {:from    (config :from)
                  :to      [(config :to)]
                  :subject (config :subject)
                  :body    message}))
