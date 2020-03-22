@@ -18,16 +18,16 @@
 
 ## Usage
 
-Download Glosa.
+Download Glosa from folder.
 
 ``` sh
-curl dist/glosa.jar -o glosa.jar
+dist/glosa-[last version]-standalone.jar
 ```
 
 Run.
 
 ```sh
-java -jar glosa.jar
+java -jar glosa-[last version]-standalone.jar
 ```
 
 Great 🎉. You already have your 🔥 own comment server 🔥.
@@ -41,15 +41,23 @@ cp config.yaml.example config.yaml
 Edit `config.yaml`.
 
 ``` yaml
-domain: localhost
+domain: example.com
 port: 4000
-debug: false
+debug: true
+subject: New comment
+from: server@example.com
+to: user@example.com
+smtp-host: smtp.example.com
+smtp-user: smtpuser
+smtp-password: smtppassword
+smtp-port: 25
+smtp-tls: true
 ```
 
 Run.
 
 ``` sh
-java -jar glosa.jar
+java -jar glosa-[last version]-standalone.jar
 ```
 
 That's it, now you just have to test that it works properly.
