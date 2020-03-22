@@ -1,4 +1,5 @@
 target/
+dist/
 
 resources/db.json
 config.yaml
