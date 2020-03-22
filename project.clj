@@ -23,7 +23,9 @@
                  ;; JSON encoding
                  [cheshire "5.9.0"]
                  ;; Yaml
-                 [clj-yaml "0.4.0"]]
+                 [clj-yaml "0.4.0"]
+                 ;; SMTP
+                 [com.draines/postal "2.0.3"]]
   :plugins [;; DEV TOOLS
             [lein-environ "1.1.0" :hooks false]
             ;;; Check idiomatic bug
@@ -39,5 +41,5 @@
             "check-format"    ["cljfmt" "check"]}
   ;; LEIN
   :main ^:skip-aot glosa.core
-  :aot  [glosa.core]
+  ;:aot  [glosa.core]
   :repl-options {:init-ns glosa.core})

@@ -1,3 +1,11 @@
 domain: example.com
 port: 4000
 debug: true
+
+subject: New comment
+from: server@example.com
+to: user@example.com
+smtp-host: smtp.example.com
+smtp-user: smtpuser
+smtp-password: smtppassword
+smtp-port: 25
