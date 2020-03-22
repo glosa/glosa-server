@@ -26,7 +26,8 @@ jobs:
     - name: Dist jar
       run: |
             mkdir -p dist
-            rm -r dist/*
+            rm -r dist/
+            mkdir -p dist
             cp target/*.jar dist
             git config user.email "action@github.com"
             git config user.name "GitHub Action"
