@@ -1,7 +1,7 @@
 domain: example.com
 port: 4000
 debug: true
-
+email: true
 subject: New comment
 from: server@example.com
 to: user@example.com
