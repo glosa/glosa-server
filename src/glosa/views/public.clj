@@ -25,8 +25,7 @@
     (let [my-json (get-JSON req)]
       (if (database/add-comment (:parent my-json) (:author my-json) (:message my-json) (:token my-json) (:thread my-json))
         (do
-          (if (config :email)
-            (notify/send (format "Author: %s\nMessage: %s\nThread: %s" (:author my-json) (:message my-json) (:thread my-json))))
+          (notify/send (format "Author: %s\nMessage: %s\nThread: %s" (:author my-json) (:message my-json) (:thread my-json)))
           (render-JSON req {:status 200}))
         (render-JSON req {:status 401})))
     (render-JSON req {:status 401})))
