@@ -1,6 +1,8 @@
 (ns glosa.ports.database
   (:require
-   [glosa.adapters.database.plain :as adapter]))
+   [glosa.config :refer [config]]))
+
+(if (= (config :database) "plain") (require '[glosa.adapters.database.plain :as adapter]))
 
 (defn get-comments
   "Find comments from url"

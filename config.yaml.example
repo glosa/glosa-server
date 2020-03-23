@@ -1,12 +1,19 @@
+# General
+debug: true
 domain: example.com
 port: 4000
-debug: true
-email: true
+# Notify
+notify: email
 subject: New comment
 from: server@example.com
 to: user@example.com
+# SMTP, only notify: email
 smtp-host: smtp.example.com
 smtp-user: smtpuser
 smtp-password: smtppassword
 smtp-port: 25
 smtp-tls: true
+# Captcha
+captcha: time
+# Database
+database: plain

@@ -1,6 +1,8 @@
 (ns glosa.ports.captcha
   (:require
-   [glosa.adapters.captcha.time :as adapter]))
+   [glosa.config :refer [config]]))
+
+(if (= (config :captcha) "time") (require '[glosa.adapters.captcha.time :as adapter]))
 
 (defn get-token
   "Generates a token to validate"
