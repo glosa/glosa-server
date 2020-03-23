@@ -17,12 +17,12 @@ jobs:
       run: lein deps
     - name: Run tests
       run: |
+            cp config.yaml.example config.yaml
             lein test
             lein check-idiomatic
             lein check-format
     - name: Compile jar
       run: |
-            cp config.yaml.example config.yaml
             lein uberjar
     - name: Dist jar
       run: |
