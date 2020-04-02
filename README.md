@@ -216,13 +216,13 @@ curl 'https://glosa.example:4000/api/v1/captcha/?url=https://glosa.example/best-
 
 ---
 
-## Import from Disqus
-https://github.com/tanrax/glosa-disqus-import
+## Connect with your static site (only HTML and Javascript)
+https://github.com/tanrax/glosa-static-integration
 
 ---
 
-## Connect with your site (HTML and Javascript)
-https://github.com/tanrax/glosa-cli
+## Import from Disqus
+https://github.com/tanrax/glosa-disqus-import
 
 ---
 
