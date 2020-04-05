@@ -5,6 +5,7 @@
    [ring.middleware.defaults :refer [site-defaults wrap-defaults]]
    [ring.middleware.reload :refer [wrap-reload]]
    [ring.middleware.session :refer [wrap-session]]
+   [ring.middleware.cors :refer [wrap-cors]]
    [glosa.urls :refer [all-routes]]
    [ring.adapter.jetty :refer [run-jetty]]) (:gen-class))
 
@@ -14,6 +15,9 @@
       (wrap-defaults (assoc-in site-defaults [:security :anti-forgery] false))
       wrap-params
       wrap-session
+      (wrap-cors 
+      	:access-control-allow-origin [#".*"]
+      	:access-control-allow-methods #{:get})
       (#(if (config :debug) (wrap-reload %)))))
 
 (defn -main [& args]

@@ -14,6 +14,8 @@
                  [ring/ring-anti-forgery "1.3.0"]
                  ;; Routing
                  [compojure "1.6.1"]
+                 ;; Cors
+                 [ring-cors "0.1.13"]
                  ;; Templates
                  [selmer "1.12.12"]
                  ;; Validations
