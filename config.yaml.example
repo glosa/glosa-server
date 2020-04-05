@@ -2,6 +2,7 @@
 debug: true
 domain: example.com
 port: 4000
+domain-cli: example-cli.com
 # Notify
 notify: email
 subject: New comment

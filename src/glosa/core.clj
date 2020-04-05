@@ -16,7 +16,7 @@
       wrap-params
       wrap-session
       (wrap-cors 
-      	:access-control-allow-origin [#".*"]
+        :access-control-allow-origin [(re-pattern (config :domain-cli))]
       	:access-control-allow-methods #{:get})
       (#(if (config :debug) (wrap-reload %)))))
 
