@@ -62,6 +62,17 @@ It will return a random token
 ``` json
 {"token":"OABWNONEOOKXRMMWADPF"}
 ```
+---
+
+## Connect with your static site (only HTML and Javascript)
+https://github.com/tanrax/glosa-static-integration
+
+---
+
+## Import your comments from Disqus
+https://github.com/tanrax/glosa-disqus-import
+
+---
 
 ## Testing
 
@@ -204,16 +215,6 @@ curl 'https://glosa.example:4000/api/v1/captcha/?url=https://glosa.example/best-
     "token": ""
 }
 ```
-
----
-
-## Connect with your static site (only HTML and Javascript)
-https://github.com/tanrax/glosa-static-integration
-
----
-
-## Import from Disqus
-https://github.com/tanrax/glosa-disqus-import
 
 ---
 
