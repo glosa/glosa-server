@@ -16,49 +16,40 @@
 - Easy to integrate with static pages.
 - Opensource.
 
-## Usage
+## Run
 
-Download Glosa from folder.
+Create a file `config.yaml` with the following content.
 
-``` sh
-dist/glosa-[last version]-standalone.jar
+``` yaml
+# General
+debug: true
+domain: localhost
+port: 4000
+domain-cli: example-cli.com
+# Notify
+notify: email
+subject: New comment
+from: server@example.com
+to: user@example.com
+# SMTP, only notify: email
+smtp-host: smtp.example.com
+smtp-user: smtpuser
+smtp-password: smtppassword
+smtp-port: 25
+smtp-tls: true
+# Captcha
+captcha: time
+# Database
+database: plain
 ```
 
-Run.
+Make sure you have Java installed and run Glosa.
 
 ```sh
 java -jar glosa-[last version]-standalone.jar
 ```
 
 Great 🎉. You already have your 🔥 own comment server 🔥.
-
-## Install
-
-``` sh
-cp config.yaml.example config.yaml
-```
-
-Edit `config.yaml`.
-
-``` yaml
-domain: example.com
-port: 4000
-debug: true
-subject: New comment
-from: server@example.com
-to: user@example.com
-smtp-host: smtp.example.com
-smtp-user: smtpuser
-smtp-password: smtppassword
-smtp-port: 25
-smtp-tls: true
-```
-
-Run.
-
-``` sh
-java -jar glosa-[last version]-standalone.jar
-```
 
 That's it, now you just have to test that it works properly.
 
