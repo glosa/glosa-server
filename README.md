@@ -65,12 +65,12 @@ It will return a random token
 ---
 
 ## Connect with your static site (only HTML and Javascript)
-https://github.com/tanrax/glosa-static-integration
+https://github.com/glosa/glosa-static-integration
 
 ---
 
 ## Import your comments from Disqus
-https://github.com/tanrax/glosa-disqus-import
+https://github.com/glosa/glosa-disqus-import
 
 ---
 
