@@ -8,13 +8,13 @@
 
 ## Amazing reasons to use it
 
-- Very fast, responses between 5ms and 15ms on average.
-- No database.
-- Configuration in a simple YAML.
-- Easy to import from Disqus.
-- Captcha system included.
-- Easy to integrate with static pages.
-- Opensource.
+- **Very fast**, responses between 5ms and 15ms on average.
+- **No database**, everything is stored in a JSON.
+- Configuration in a **simple YAML**.
+- **Easy to import** from Disqus.
+- **Captcha** system included.
+- Easy to integrate with **static pages**.
+- **Opensource**.
 
 ## Run
 
