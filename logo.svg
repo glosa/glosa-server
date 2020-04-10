@@ -1,82 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   id="Capa_1"
-   enable-background="new 0 0 511.096 511.096"
-   height="512"
-   viewBox="0 0 511.096 511.096"
-   width="512"
-   version="1.1"
-   sodipodi:docname="comment.svg"
-   inkscape:export-filename="/home/andros/Downloads/comment.svg.png"
-   inkscape:export-xdpi="122.22385"
-   inkscape:export-ydpi="122.22385"
-   inkscape:version="0.92.4 5da689c313, 2019-01-14">
-  <metadata
-     id="metadata12">
-    <rdf:RDF>
-      <cc:Work
-         rdf:about="">
-        <dc:format>image/svg+xml</dc:format>
-        <dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-      </cc:Work>
-    </rdf:RDF>
-  </metadata>
-  <defs
-     id="defs10" />
-  <sodipodi:namedview
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1"
-     objecttolerance="10"
-     gridtolerance="10"
-     guidetolerance="10"
-     inkscape:pageopacity="0"
-     inkscape:pageshadow="2"
-     inkscape:window-width="1241"
-     inkscape:window-height="1016"
-     id="namedview8"
-     showgrid="false"
-     inkscape:zoom="0.4609375"
-     inkscape:cx="258.16949"
-     inkscape:cy="256"
-     inkscape:window-x="1241"
-     inkscape:window-y="27"
-     inkscape:window-maximized="0"
-     inkscape:current-layer="Capa_1" />
-  <g
-     id="Speech_Bubble_48_"
-     style="fill:#ffaaea;fill-opacity:1;stroke:#000000;stroke-width:26.35538483;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-     transform="matrix(0.6313041,0,0,0.71599891,190.59142,-12.9677)">
-    <g
-       id="g4"
-       style="fill:#ffaaea;fill-opacity:1;stroke:#000000;stroke-width:26.35538483;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1">
-      <path
-         d="M 74.414,480.548 H 38.2 L 63.807,454.941 C 77.614,441.134 86.236,423.176 88.554,403.695 29.427,364.893 0,308.681 0,249.751 0,141.032 99.923,30.548 256.414,30.548 c 165.785,0 254.682,101.666 254.682,209.678 0,108.724 -89.836,210.322 -254.682,210.322 -28.877,0 -59.01,-3.855 -85.913,-10.928 -25.467,26.121 -59.973,40.928 -96.087,40.928 z"
-         id="path2"
-         style="fill:#ffaaea;fill-opacity:1;stroke:#000000;stroke-width:26.35538483;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         inkscape:connector-curvature="0" />
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;">
+    <g transform="matrix(0.555206,0,0,0.651015,215.637,-8.06953)">
+        <g id="Speech_Bubble_48_">
+            <g id="g4">
+                <path id="path2" d="M74.546,481.398L38.268,481.398L63.92,455.746C77.751,441.914 86.389,423.924 88.711,404.409C29.479,365.538 0,309.227 0,250.193C0,141.281 100.1,30.602 256.868,30.602C422.946,30.602 512,132.448 512,240.651C512,349.567 422.005,451.345 256.868,451.345C227.939,451.345 197.753,447.483 170.803,440.398C145.291,466.565 110.723,481.398 74.546,481.398Z" style="fill:rgb(255,170,234);fill-rule:nonzero;stroke:black;stroke-width:26.4px;"/>
+            </g>
+        </g>
     </g>
-  </g>
-  <flowRoot
-     xml:space="preserve"
-     id="flowRoot4526"
-     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40.00032806px;line-height:1.25;font-family:'URW Gothic';-inkscape-font-specification:'URW Gothic, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
-     transform="matrix(6.2389463,0,0,6.9459607,-913.2867,-968.28029)"><flowRegion
-       id="flowRegion4528"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40.00032806px;font-family:'URW Gothic';-inkscape-font-specification:'URW Gothic, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1"><rect
-         id="rect4530"
-         width="282.03391"
-         height="260.33899"
-         x="145.35593"
-         y="177.8983"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40.00032806px;font-family:'URW Gothic';-inkscape-font-specification:'URW Gothic, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1" /></flowRegion><flowPara
-       id="flowPara4532"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40.00032806px;font-family:'URW Gothic';-inkscape-font-specification:'URW Gothic, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1">G</flowPara></flowRoot></svg>
+    <g transform="matrix(1,0,0,1,-22.6377,-18.6273)">
+        <g id="G">
+            <text x="32.314px" y="451.641px" style="font-family:'Helvetica-Light', 'Helvetica', sans-serif;font-weight:300;font-size:278.119px;">G</text>
+        </g>
+    </g>
+</svg>
