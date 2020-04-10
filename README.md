@@ -9,11 +9,12 @@
 ## Amazing reasons to use it
 
 - **Very fast**, responses between 5ms and 15ms on average.
+- Easy to integrate with **static pages**.
+- **Easy to import** from Disqus.
 - **No database**, everything is stored in a JSON.
 - Configuration in a **simple YAML**.
-- **Easy to import** from Disqus.
 - **Captcha** system included.
-- Easy to integrate with **static pages**.
+- **Sends you an email** when you receive a new message.
 - **Opensource**.
 
 ## Run
@@ -158,6 +159,7 @@ Save comment from `https://glosa.example/best-SO/`.
 ``` sh
 curl -H "Content-type: application/json" -d '{
 	"parent": "",
+	"deep": 0,
 	"token": "VRJUOBBMTKFQUAFZOKJG",
 	"author": "Juana",
 	"message": "I like it very much.",
