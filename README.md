@@ -8,7 +8,7 @@
 
 ## Amazing reasons to use it
 
-- Only 2ms to respond.
+- Very fast, responses between 5ms and 15ms on average.
 - No database.
 - Configuration in a simple YAML.
 - Easy to import from Disqus.
