@@ -19,7 +19,9 @@
 
 ## Run
 
-Create a file `config.yaml` with the following content. You can also use `config.yaml.example` as a base config and change it to fit your needs.
+1) Make sure you have Java installed.
+
+2) Create a file `config.yaml` with the following content. You can also use `config.yaml.example` as a base config and change it to fit your needs.
 
 ``` yaml
 # General
@@ -44,15 +46,12 @@ captcha: time
 database: plain
 ```
 
-Make sure you have Java installed and run Glosa.
+3) Download the latest version of Glosa (`glosa-{version}-standalone.jar`).
 
-Run the following command to build a `jar` file.
+https://github.com/glosa/glosa-server/releases
 
-`lein uberjar`
 
-After this two files should be created in `target/`. We will use the standalone version.
-
-Now you can execute glosa.
+4) Now you can execute glosa.
 
 ```sh
 java -jar target/glosa-{version}-standalone.jar
@@ -71,6 +70,36 @@ It will return a random token
 ``` json
 {"token":"OABWNONEOOKXRMMWADPF"}
 ```
+
+## Create your own JAR
+
+1) Make sure you have **openjdk** or **oracle-jdk** installed, **clojure** and  **leiningen**.
+
+### MacOS
+
+``` sh
+brew install openjdk clojure leiningen
+```
+
+### Debian/Ubuntu
+
+``` sh
+sudo apt install default-jdk clojure leiningen
+```
+
+2) Clone the repository and enter the generated folder.
+
+``` sh
+git clone https://github.com/glosa/glosa-server.git
+cd glosa-server
+```
+
+3) Run the following command to build a `jar` file.
+
+`lein uberjar`
+
+After this two files should be created in `target/`. We will use the standalone version: `glosa-{version}-standalone.jar`.
+
 ---
 
 ## Connect with your static site (only HTML and Javascript)
