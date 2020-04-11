@@ -19,7 +19,7 @@
 
 ## Run
 
-Create a file `config.yaml` with the following content.
+Create a file `config.yaml` with the following content. You can also use `config.yaml.example` as a base config and change it to fit your needs.
 
 ``` yaml
 # General
@@ -46,8 +46,16 @@ database: plain
 
 Make sure you have Java installed and run Glosa.
 
+Run the following command to build a `jar` file.
+
+`lein uberjar`
+
+After this two files should be created in `target/`. We will use the standalone version.
+
+Now you can execute glosa.
+
 ```sh
-java -jar glosa-[last version]-standalone.jar
+java -jar target/glosa-{version}-standalone.jar
 ```
 
 Great 🎉. You already have your 🔥 own comment server 🔥.

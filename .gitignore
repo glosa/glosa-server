@@ -7,3 +7,4 @@ config.yaml
 captcha.json
 db.json
 .nrepl-port
+*.jar
