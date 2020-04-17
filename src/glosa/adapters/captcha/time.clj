@@ -68,4 +68,4 @@
         valid (some (fn [item] (and (= (item :token) token) (< (+ (item :createdAt now) min-time-seconds) now) (= (item :url) url))) @db)]
     (if valid (reset! db (filter (fn [item] (not= (:token item) token)) @db))) ;; Remove token
     (clear-tokens-old)
-    valid))
+    (not (nil? valid))))

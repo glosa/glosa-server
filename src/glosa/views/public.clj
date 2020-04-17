@@ -26,9 +26,9 @@
       (if (database/add-comment (:parent my-json) (:author my-json) (:message my-json) (:token my-json) (:thread my-json))
         (do
           (notify/send (format "Author: %s\nMessage: %s\nThread: %s" (:author my-json) (:message my-json) (:thread my-json)))
-          (render-JSON req {:status 200}))
-        (render-JSON req {:status 401})))
-    (render-JSON req {:status 401})))
+          (render-JSON req {} 200))
+        (render-JSON req {} 401)))
+    (render-JSON req {} 401)))
 
 (defn get-captcha
   "Get token captcha"
@@ -38,4 +38,4 @@
 (defn status-404
   "Page 404"
   [req]
-  (render-JSON req {:status 404}))
+  (render-JSON req {} 404))

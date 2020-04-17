@@ -6,7 +6,7 @@
   :dependencies [;; Clojure
                  [org.clojure/clojure "1.10.1"]
                  ;; Tadam core
-                 [tadam-core "0.3.4"]
+                 [tadam-core "0.3.5"]
                  ;; HTTP Server
                  [ring "1.7.1"]
                  ;; Ring middleware that prevents CSRF attacks
