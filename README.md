@@ -288,6 +288,8 @@ curl 'https://glosa.example:4000/api/v1/captcha/?url=https://glosa.example/best-
 
 To **manage some minor features** you can use the `manager` script which will filter, modify or delete the database. Previously **remember to stop Glosa** to avoid problems.
 
+You will need to have **Node installed** on your computer and give it **permission to run**.
+
 ### Take all comments by thread
 
 ``` sh
