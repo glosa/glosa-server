@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="logo.png" alt="logo" width="200"> 
+  <img src="media/logo.png" alt="logo" width="200"> 
 </p>
 <h1 align="center">Glosa: Comments for static sites.</h1>
 <p align="center">
@@ -19,6 +19,19 @@
 - **Multisite**: Single server for multiple websites.
 
 ## Scenarios
+
+### 1 web page, share or not a server
+
+<p align="center">
+  <img src="media/scenary-1.png" alt="logo" width="90%"> 
+</p>
+
+### 3 web pages in different domains or servers
+
+<p align="center">
+  <img src="media/scenary-1.png" alt="logo" width="90%"> 
+</p>
+
 
 ## Origin
 
