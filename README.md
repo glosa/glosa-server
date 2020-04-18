@@ -146,13 +146,6 @@ https://github.com/glosa/glosa-disqus-import
 
 ---
 
-## Testing
-
-``` sh
-lein check-idiomatic
-lein check-format
-```
-
 ## API
 
 ### Get Comments
@@ -288,6 +281,47 @@ curl 'https://glosa.example:4000/api/v1/captcha/?url=https://glosa.example/best-
 {
     "token": ""
 }
+```
+---
+
+## Manager script
+
+To **manage some minor features** you can use the `manager` script which will filter, modify or delete the database. Previously **remember to stop Glosa** to avoid problems.
+
+### Take all comments by thread
+
+``` sh
+./manager get [thread]
+```
+
+Example
+
+``` sh
+./manager get https://glosa.example/best-SO/
+```
+
+### Update the text of a comment
+
+``` sh
+./manager update [id] [new message]
+```
+
+Example
+
+``` sh
+./manager update 1234 'I love your article.'
+```
+
+### Delete a comment
+
+``` sh
+./manager delete [id]
+```
+
+Example
+
+``` sh
+./manager delete 1234
 ```
 
 ---
