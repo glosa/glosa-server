@@ -23,13 +23,13 @@
 ### 1 web page, share or not a server
 
 <p align="center">
-  <img src="media/scenary-1.png" alt="logo" width="90%"> 
+  <img src="media/scenary-1.png" alt="logo" width="500px"> 
 </p>
 
 ### 3 web pages in different domains or servers
 
 <p align="center">
-  <img src="media/scenary-1.png" alt="logo" width="90%"> 
+  <img src="media/scenary-2.png" alt="logo" width="500px"> 
 </p>
 
 
