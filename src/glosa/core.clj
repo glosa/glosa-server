@@ -15,8 +15,8 @@
       (wrap-defaults (assoc-in site-defaults [:security :anti-forgery] false))
       wrap-params
       wrap-session
-      (wrap-cors 
-        :access-control-allow-origin [(re-pattern (if (config :debug) ".*"  (config :domain-cli)))]
+      (wrap-cors
+        :access-control-allow-origin [(re-pattern (if (config :debug) ".*" (config :domain-cli)))]
         :access-control-allow-methods [:get :post])
       (#(if (config :debug) (wrap-reload %)))))
 

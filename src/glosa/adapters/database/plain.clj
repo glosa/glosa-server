@@ -39,9 +39,9 @@
   (map (fn [comment] (assoc comment :deep (get-deep (:id comment) nil))) (sort-by :createdAt (filter #(= (:thread %) url) @db))))
 
 (defn get-new-id
-"Generate a new id by finding out which is the highest id and uploading one"
-[]
-(inc (reduce (fn [id item] (if (< id (:id item)) (:id item) id)) 0 @db)))
+  "Generate a new id by finding out which is the highest id and uploading one"
+  []
+  (inc (reduce (fn [id item] (if (< id (:id item)) (:id item) id)) 0 @db)))
 
 (defn add-comment
   "Add new comment"
