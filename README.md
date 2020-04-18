@@ -21,8 +21,14 @@
 ## How does it work?
 
 <p align="center">
-  <img src="media/explication.png" alt="logo" width="500px"> 
+  <img src="media/explication.png" alt="logo" width="90%"> 
 </p>
+
+On the one hand we have Glosa who would be our comment server. It **feeds in GET and POST requests**, and obediently **returns JSON**. It can only return **comments from a url** (it sorts comments by url, not ids) or **create a new comment** (**parent or child** of another comment). Nothing else. If you want to create a comment previously you will need to ask for the token to confirm that you are not a robot.
+
+**Optionally you can receive an email** automatically when a new comment is written.
+
+The website, CMS or mobile application, must integrate a **logic with Javascript** to make the necessary requests and render the comments properly. To make this task easier we have created an example template that you can modify to your needs. You can find the link on this page.
 
 ## Scenarios
 
