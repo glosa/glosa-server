@@ -16,6 +16,15 @@
 - **Captcha** system included.
 - **Sends you an email** when you receive a new message.
 - **Opensource**.
+- **Multisite**: Single server for multiple websites.
+
+## Scenarios
+
+## Origin
+
+A Glosa is a **Spanish word**. It is defined as a **note**, usually brief, that is **written in the margin of a text** or even between its lines with the intention of clarifying some idea of it. 
+
+The software was born with the **intention that the author's static blog would no longer depend on an external company** (Disqus), and could have control of its content. To make it as easy as possible to deploy, develop and maintain; he programmed in **Clojure**. And from the beginning it was clear to him that he didn't need a conventional database, **plain text was enough**.
 
 ## Run
 
