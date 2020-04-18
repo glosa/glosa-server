@@ -18,6 +18,12 @@
 - **Opensource**.
 - **Multisite**: Single server for multiple websites.
 
+## How does it work?
+
+<p align="center">
+  <img src="media/explication.png" alt="logo" width="500px"> 
+</p>
+
 ## Scenarios
 
 ### 1 web page, share or not a server
