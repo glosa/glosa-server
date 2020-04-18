@@ -124,7 +124,7 @@ After this two files should be created in `target/`. We will use the standalone 
 
 ---
 
-## Connect with your static site (only HTML and Javascript)
+## Example connect with your static site (only HTML and Javascript)
 https://github.com/glosa/glosa-static-integration
 
 ---
