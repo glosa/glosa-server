@@ -1,0 +1,38 @@
+#!/usr/bin/env node
+
+'use strict';
+
+const fs = require('fs');
+const PATH_DB = 'db.json';
+
+let rawdata = fs.readFileSync(PATH_DB);
+let db = JSON.parse(rawdata);
+
+
+switch (process.argv[2]) {
+    case 'get':
+        // node manager.js get-comments https://programadorwebvalencia.com/cual-es-el-mejor-navegador-web-2020/
+        const commentGet = db.filter((comment) => {
+            return comment.thread === process.argv[3];
+        });
+        console.log(commentGet);
+    break;
+    case 'update':
+        const commentsUpdate = db.map((comment) => {
+            const updateComment = comment;
+            if (updateComment.id === process.argv[3]) {
+                updateComment.message = process.argv[4];
+            }
+            return updateComment;
+        });
+        fs.writeFileSync(PATH_DB, JSON.stringify(commentsUpdate));
+        console.log('Update!');
+    break;
+    case 'delete':
+        const commentDelete = db.filter((comment) => {
+            return comment.id !== process.argv[3];
+        });
+        fs.writeFileSync(PATH_DB, JSON.stringify(commentDelete));
+        console.log('Delete!');
+    break;
+}
