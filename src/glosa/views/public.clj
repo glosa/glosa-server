@@ -11,7 +11,7 @@
 (defn is-valid-domain
   "Check if the request comes from a valid domain"
   [req]
-  (= (get-in req [:headers "host"]) (str (config :domain) ":" (config :port))))
+  (= (get-in req [:headers "referer"]) (config :domain-cli)))
 
 (defn get-comments
   "All comments from url"
