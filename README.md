@@ -65,7 +65,7 @@ debug: false
 domain: localhost
 port: 4000
 # It indicates which domain can use it. Debug true so there are no limitations.
-domain-cli: example-cli.com
+domain-cli: "http://example-cli.com/"
 
 ##### Notify #####
 # Type of notification, currently valid: email
