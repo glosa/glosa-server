@@ -1,16 +1,17 @@
 (ns glosa.urls
   (:require
-   [compojure.core :refer [defroutes GET POST]]
+   [compojure.core :refer [defroutes context GET POST]]
    [compojure.route :as route]
    [glosa.views.public :as view-public]))
 
-(def api-prefix "/api/v1/")
+(def api-prefix "/api/v1")
 
 (defroutes public
   ;; Urls public pages
-  (GET (str api-prefix "comments/") [] view-public/get-comments)
-  (POST (str api-prefix "comments/") [] view-public/add-comment)
-  (GET (str api-prefix "captcha/") [] view-public/get-captcha))
+  (context api-prefix []
+           (GET "/comments/" [] view-public/get-comments)
+           (POST "/comments/" [] view-public/add-comment)
+           (GET "/captcha/" [] view-public/get-captcha)))
 
 (defroutes resources-routes
   ;; Resources (statics)

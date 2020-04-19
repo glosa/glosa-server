@@ -19,7 +19,7 @@
 
 (def db (atom (db-load)))
 (def token-len 20)
-(def min-time-seconds 20)
+(def min-time-seconds 10)
 
 ;; Functions
 
