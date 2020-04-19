@@ -1,9 +1,14 @@
-# General
-debug: true
-domain: example.com
+##### General #####
+# If it is active it will be accessible to any client
+debug: false
+# It can be a domain in case of using a proxy: example.com
+domain: localhost
 port: 4000
+# It indicates which domain can use it. Debug true so there are no limitations.
 domain-cli: example-cli.com
-# Notify
+
+##### Notify #####
+# Type of notification, currently valid: email
 notify: email
 subject: New comment
 from: server@example.com
@@ -14,7 +19,11 @@ smtp-user: smtpuser
 smtp-password: smtppassword
 smtp-port: 25
 smtp-tls: true
-# Captcha
+
+##### Captcha #####
+# Currently valid: time
 captcha: time
-# Database
+
+##### Database #####
+# Currently valid: plain
 database: plain
