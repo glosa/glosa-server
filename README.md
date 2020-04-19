@@ -15,8 +15,8 @@
 - Configuration in a **simple YAML**.
 - **Captcha** system included.
 - **Sends you an email** when you receive a new message.
-- **Opensource**.
 - **Multisite**: Single server for multiple websites.
+- **Opensource**.
 
 ## How does it work?
 
@@ -58,12 +58,17 @@ The software was born with the **intention that the author's static blog would n
 2) Create a file `config.yaml` with the following content. You can also use `config.yaml.example` as a base config and change it to fit your needs.
 
 ``` yaml
-# General
-debug: true
+##### General #####
+# If it is active it will be accessible to any client
+debug: false
+# It can be a domain in case of using a proxy: example.com
 domain: localhost
 port: 4000
+# It indicates which domain can use it. Debug true so there are no limitations.
 domain-cli: example-cli.com
-# Notify
+
+##### Notify #####
+# Type of notification, currently valid: email
 notify: email
 subject: New comment
 from: server@example.com
@@ -74,9 +79,13 @@ smtp-user: smtpuser
 smtp-password: smtppassword
 smtp-port: 25
 smtp-tls: true
-# Captcha
+
+##### Captcha #####
+# Currently valid: time
 captcha: time
-# Database
+
+##### Database #####
+# Currently valid: plain
 database: plain
 ```
 
