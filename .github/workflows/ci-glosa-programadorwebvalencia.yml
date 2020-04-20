@@ -15,5 +15,12 @@ jobs:
     - uses: actions/checkout@v2
     - name: Configure
       run: echo '${{ secrets.CONFIG_PROGRAMADORWEBVALENCIA }}' > config.yaml
+    - name: Compile
+      run: lein uberjar
     - name: Restart server
-      run: lein run
+      run: |
+        sudo systemctl stop glosa
+        sudo rm /root/www/glosa-server/glosa.jar
+        sudo mv glosa-*-standalone.jar /root/www/glosa-server/glosa.jar
+        sudo systemctl start glosa
+ 
