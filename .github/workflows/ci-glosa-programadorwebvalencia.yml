@@ -14,11 +14,13 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Compile
-      run: lein uberjar
+      run: |
+        mv config.yaml.example config.yaml
+        lein uberjar
     - name: Restart server
       run: |
         sudo systemctl stop glosa
-        sudo rm /root/www/glosa-server/glosa.jar
+        sudo rm -f /root/www/glosa-server/glosa.jar
         sudo mv glosa-*-standalone.jar /root/www/glosa-server/glosa.jar
         sudo systemctl start glosa
  
