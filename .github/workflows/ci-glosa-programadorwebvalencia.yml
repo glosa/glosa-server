@@ -21,6 +21,6 @@ jobs:
       run: |
         sudo systemctl stop glosa
         sudo rm -f /root/www/glosa-server/glosa.jar
-        sudo mv glosa-*-standalone.jar /root/www/glosa-server/glosa.jar
+        sudo mv target/glosa-*-standalone.jar /root/www/glosa-server/glosa.jar
         sudo systemctl start glosa
  
