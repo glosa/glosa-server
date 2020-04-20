@@ -16,4 +16,4 @@ jobs:
     - name: Configure
       run: echo '${{ secrets.CONFIG_PROGRAMADORWEBVALENCIA }}' > config.yaml
     - name: Restart server
-      run: sudo systemctl restart glosa
+      run: sudo -n systemctl restart glosa
