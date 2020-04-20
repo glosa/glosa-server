@@ -23,4 +23,3 @@ jobs:
         sudo rm -f /root/www/glosa-server/glosa.jar
         sudo mv target/glosa-*-standalone.jar /root/www/glosa-server/glosa.jar
         sudo systemctl start glosa
- 
