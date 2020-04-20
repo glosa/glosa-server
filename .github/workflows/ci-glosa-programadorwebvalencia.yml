@@ -13,8 +13,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Configure
-      run: echo '${{ secrets.CONFIG_PROGRAMADORWEBVALENCIA }}' > config.yaml
     - name: Compile
       run: lein uberjar
     - name: Restart server
