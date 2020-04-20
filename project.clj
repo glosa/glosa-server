@@ -16,6 +16,8 @@
                  [compojure "1.6.1"]
                  ;; Cors
                  [ring-cors "0.1.13"]
+                 ;; Nginx adapter
+                 [nginx-clojure "0.5.1"]
                  ;; Templates
                  [selmer "1.12.12"]
                  ;; Validations
