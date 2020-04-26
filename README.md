@@ -20,6 +20,16 @@
 
 ### [Video Demo](https://cdn.jsdelivr.net/gh/glosa/glosa-static-integration/media/demo.mp4)
 
+---
+
+## [Example connect with your static site (only HTML and Javascript)](https://github.com/glosa/glosa-static-integration)
+
+---
+
+## [Import your comments from Disqus](https://github.com/glosa/glosa-disqus-import)
+
+---
+
 ## How does it work?
 
 <p align="center">
@@ -144,16 +154,6 @@ cd glosa-server
 `lein uberjar`
 
 After this two files should be created in `target/`. We will use the standalone version: `glosa-{version}-standalone.jar`.
-
----
-
-## Example connect with your static site (only HTML and Javascript)
-https://github.com/glosa/glosa-static-integration
-
----
-
-## Import your comments from Disqus
-https://github.com/glosa/glosa-disqus-import
 
 ---
 
