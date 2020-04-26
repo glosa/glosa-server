@@ -20,8 +20,7 @@
       (do
         (notify/send (format "Author: %s\nMessage: %s\nThread: %s" (:author my-json) (:message my-json) (:thread my-json)))
         (render-JSON req {} 200))
-      (render-JSON req {} 401)))
-  (render-JSON req {} 401))
+      (render-JSON req {} 401))))
 
 (defn get-captcha
   "Get token captcha"
