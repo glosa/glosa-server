@@ -18,9 +18,7 @@
 - **Multisite**: Single server for multiple websites.
 - **Opensource**.
 
-## Demo
-
-[Video](https://cdn.jsdelivr.net/gh/glosa/glosa-static-integration/media/demo.mp4)
+### [Video Demo](https://cdn.jsdelivr.net/gh/glosa/glosa-static-integration/media/demo.mp4)
 
 ## How does it work?
 
