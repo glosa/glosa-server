@@ -1,4 +1,4 @@
-(defproject glosa "1.0.4"
+(defproject glosa "1.0.5"
   :description "glosa"
   :url "https://github.com/tanrax/glosa"
   :license {:name "EPL-2.0 OR GPL-2.0-or-later WITH Classpath-exception-2.0"
@@ -8,7 +8,7 @@
                  ;; Tadam core
                  [tadam-core "0.3.5"]
                  ;; HTTP Server
-                 [ring "1.7.1"]
+                 [ring "1.8.0"]
                  ;; Ring middleware that prevents CSRF attacks
                  [ring/ring-defaults "0.3.2"]
                  [ring/ring-anti-forgery "1.3.0"]
