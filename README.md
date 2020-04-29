@@ -337,6 +337,60 @@ Example
 ./manager delete 1234
 ```
 
+## Deployment in production
+
+With Nginx it's pretty quick and easy. You can use it as a reverse proxy, since Glosa contains its own web server (Jetty). You can see an example of configuration that can be useful.
+
+### Nginx
+
+``` nginx
+server {        
+
+        server_name glosa.domain.com;
+
+        access_log /var/log/glosa_access.log;
+        error_log /var/log/glosa_error.log;
+
+        location / {
+            proxy_pass http://localhost:4000/;
+            proxy_set_header Host $http_host;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+            proxy_redirect  off;
+        }
+}
+```
+
+### Systemctl
+
+To create a service in Linux is done like any application in Java. Below you can see an example.
+
+Create a file in the following path: `/etc/systemd/system/glosa.service`
+
+Add the content.
+
+``` Systemctl
+[Unit]
+Description=Glosa
+After=network.target
+
+[Service]
+Type=simple
+Restart=always
+WorkingDirectory=/folder/jar/
+ExecStart=java -jar glosa.jar
+
+[Install]
+WantedBy=multi-user.target 
+```
+
+Finally enable and start the service.
+
+``` sh
+sudo systemctl enable glosa
+sudo systemctl start glosa
+```
+
 ---
 
 <p align="center">
