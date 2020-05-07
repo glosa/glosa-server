@@ -301,6 +301,18 @@ To **manage some minor features** you can use the `manager` script which will fi
 
 You will need to have **Node installed** on your computer and give it **permission to run**.
 
+### Last comments
+
+``` sh
+./manager last [number of elements]
+```
+
+Example
+
+``` sh
+./manager last 3
+```
+
 ### Take all comments by thread
 
 ``` sh

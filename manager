@@ -16,6 +16,11 @@ switch (process.argv[2]) {
         });
         console.log(commentGet);
     break;
+    case 'last':
+        const lastComments = db.sort((a, b) => b.createdAt - a.createdAt).slice(0, process.argv[3]).reverse();
+        console.log(lastComments);
+    break;
+
     case 'update':
         const commentsUpdate = db.map((comment) => {
             const temp = comment;
