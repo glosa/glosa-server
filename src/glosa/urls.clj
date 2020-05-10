@@ -11,7 +11,8 @@
   (context api-prefix []
            (GET "/comments/" [] view-public/get-comments)
            (POST "/comments/" [] view-public/add-comment)
-           (GET "/captcha/" [] view-public/get-captcha)))
+           (GET "/captcha/" [] view-public/get-captcha)
+           (GET "/ping/" [] view-public/pong)))
 
 (defroutes resources-routes
   ;; Resources (statics)

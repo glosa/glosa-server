@@ -293,6 +293,28 @@ curl 'https://glosa.example:4000/api/v1/captcha/?url=https://glosa.example/best-
     "token": ""
 }
 ```
+
+### Check if he is alive
+
+GET: Simple answer to check that the service is working.
+
+``` sh
+/api/v1/ping/
+```
+
+#### Example
+
+``` sh
+curl 'https://glosa.example:4000/api/v1/ping/'
+```
+
+#### Success response
+
+``` json
+{
+    "ping": "pong"
+}
+```
 ---
 
 ## Manager script

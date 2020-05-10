@@ -27,6 +27,11 @@
   [req]
   (render-JSON req (assoc {} :token (captcha/get-token (-> req :params :url)))))
 
+(defn pong
+  "Gives a simple message to record his abilities to play ping pong while he is alive"
+  [req]
+  (render-JSON req {:ping "pong"}))
+
 (defn status-404
   "Page 404"
   [req]
