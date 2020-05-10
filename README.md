@@ -371,7 +371,7 @@ Example
 ./manager delete 1234
 ```
 
-## Deployment in production
+## Deployment
 
 With Nginx it's pretty quick and easy. You can use it as a reverse proxy, since Glosa contains its own web server (Jetty). You can see an example of configuration that can be useful.
 
