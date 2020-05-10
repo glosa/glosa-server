@@ -67,6 +67,18 @@ The software was born with the **intention that the author's static blog would n
 
 1) Make sure you have Java installed.
 
+Debian/Ubuntu
+
+``` sh
+sudo apt install default-jre
+```
+
+Mac OS
+
+``` sh
+brew install java
+```
+
 2) Create a file `config.yaml` with the following content. You can also use `config.yaml.example` as a base config and change it to fit your needs.
 
 ``` yaml
