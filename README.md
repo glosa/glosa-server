@@ -168,6 +168,13 @@ cd glosa-server
 
 After this two files should be created in `target/`. We will use the standalone version: `glosa-{version}-standalone.jar`.
 
+## Notification template for email
+
+The first time Glosa is run it will create an HTML template with the name `template-email.html`. Edit freely.
+
+<p align="center">
+  <img src="media/email.png" alt="logo" width="90%"> 
+</p>
 ---
 
 ## API
@@ -225,7 +232,7 @@ curl 'https://programadorwebvalencia.localhost:4000/api/v1/comments/?url=https:/
 
 ### - Add Comment
 
-POST: Add new comment on one page. After saving the comment the token will no longer be valid.
+POST: Add new comment on one page. After saving the comment the token will no longer be valid. At the same time a notification (email) will be sent to the administrator (in the configuration it is called `to`), in case it is a sub-comment it will also be sent another notification to the parent of the comment if the address is present.
 
 ``` sh
 /api/v1/comments/
