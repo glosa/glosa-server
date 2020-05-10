@@ -175,6 +175,7 @@ The first time Glosa is run it will create an HTML template with the name `templ
 <p align="center">
   <img src="media/email.png" alt="logo" width="90%"> 
 </p>
+
 ---
 
 ## API
