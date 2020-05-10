@@ -6,5 +6,5 @@
 
 (defn send
   "Send message"
-  [message]
-  (if (not-empty (config :notify)) (adapter/send message)))
+  [author message thread]
+  (if (not-empty (config :notify)) (adapter/send author message thread)))
