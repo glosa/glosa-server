@@ -8,3 +8,4 @@ captcha.json
 db.json
 .nrepl-port
 *.jar
+template-email.html
