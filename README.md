@@ -159,7 +159,7 @@ After this two files should be created in `target/`. We will use the standalone 
 
 ## API
 
-### Get Comments
+### - Get Comments
 
 GET: Gets all the comments on one page.
 
@@ -210,7 +210,7 @@ curl 'https://programadorwebvalencia.localhost:4000/api/v1/comments/?url=https:/
 []
 ```
 
-### Add Comment
+### - Add Comment
 
 POST: Add new comment on one page. After saving the comment the token will no longer be valid.
 
@@ -257,7 +257,7 @@ curl -H "Content-type: application/json" -d '{
 }
 ```
 
-### Get captcha token
+### - Get captcha token
 
 GET: Get a token to validate that a new comment can be created. It has only one use. It must also be obtained 20 seconds before use or it will not work.
 
@@ -294,7 +294,7 @@ curl 'https://glosa.example:4000/api/v1/captcha/?url=https://glosa.example/best-
 }
 ```
 
-### Check if he is alive
+### - Check if he is alive
 
 GET: Simple answer to check that the service is working.
 
