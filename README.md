@@ -14,7 +14,8 @@
 - **No database**, everything is stored in a JSON.
 - Configuration in a **simple YAML**.
 - **Captcha** system included.
-- **Sends you an email** when you receive a new message.
+- **Receive an email** for each new comment.
+- **Users are notified** by email if they are answered.
 - **Multisite**: Single server for multiple websites.
 - **Opensource**.
 
