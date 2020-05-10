@@ -19,7 +19,9 @@
 - **Multisite**: Single server for multiple websites.
 - **Opensource**.
 
-### [Video Demo](https://cdn.jsdelivr.net/gh/glosa/glosa-static-integration/media/demo.mp4)
+---
+
+## [Video Demo](https://cdn.jsdelivr.net/gh/glosa/glosa-static-integration/media/demo.mp4)
 
 ---
 
@@ -28,6 +30,18 @@
 ---
 
 ## [Import your comments from Disqus](https://github.com/glosa/glosa-disqus-import)
+
+---
+
+## Use it now
+
+- [How does it work?](#how-does-it-work)
+- [Origin](#origin)
+- [Run](#run)
+- [Create your own JAR](#create-your-own-jar)
+- [API](#api)
+- [Manager script](#manager-script)
+- [Deployment](#deployment)
 
 ---
 
