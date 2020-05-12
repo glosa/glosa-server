@@ -12,7 +12,7 @@ domain-cli: "http://example-cli.com/"
 notify: email
 subject: New comment
 from: server@example.com
-to: user@example.com
+admin: user@example.com
 # SMTP, only notify: email
 smtp-host: smtp.example.com
 smtp-user: smtpuser

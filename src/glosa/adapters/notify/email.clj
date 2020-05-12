@@ -1,6 +1,7 @@
 (ns glosa.adapters.notify.email
   (:require
    [glosa.config :refer [config]]
+   [glosa.ports.database :refer [get-email-parent]]
    [postal.core :refer [send-message]]
    [selmer.parser :as s]
    [clojure.java.io :as io]))
@@ -18,16 +19,18 @@
 
 (defn send
   "Send email"
-  [author message thread]
-  (.start (Thread. (fn [] (send-message {:host (config :smtp-host)
-                                         :user (config :smtp-user)
-                                         :pass (config :smtp-password)
-                                         :port (config :smtp-port)
-                                         :tls  (config :smtp-tls)}
-                                        {:from    (config :from)
-                                         :to      [(config :to)]
-                                         :subject (config :subject)
-                                         :body    [{:type    "text/html"
-                                                    :content (s/render (slurp template-html-path) {:author  author
-                                                                                                   :message message
-                                                                                                   :thread  thread})}]})))))
+  [id author message thread]
+  (.start (Thread. (fn []
+                     ;; Send email Admin
+                     (doseq [to [(config :admin) (get-email-parent id)]] (if-not (nil? to) (send-message {:host (config :smtp-host)
+                                                                                                          :user (config :smtp-user)
+                                                                                                          :pass (config :smtp-password)
+                                                                                                          :port (config :smtp-port)
+                                                                                                          :tls  (config :smtp-tls)}
+                                                                                                         {:from    (config :from)
+                                                                                                          :to      [to]
+                                                                                                          :subject (config :subject)
+                                                                                                          :body    [{:type    "text/html"
+                                                                                                                     :content (s/render (slurp template-html-path) {:author  author
+                                                                                                                                                                    :message message
+                                                                                                                                                                    :thread  thread})}]}) nil))))))

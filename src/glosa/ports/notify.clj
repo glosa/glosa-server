@@ -2,9 +2,13 @@
   (:require
    [glosa.config :refer [config]]))
 
+;; Enable adapter
+
 (if (= (config :notify) "email") (require '[glosa.adapters.notify.email :as adapter]))
+
+;; Functions
 
 (defn send
   "Send message"
-  [author message thread]
-  (if (not-empty (config :notify)) (adapter/send author message thread)))
+  [id author message thread]
+  (if (not-empty (config :notify)) (adapter/send id author message thread) nil))

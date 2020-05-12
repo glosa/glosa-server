@@ -43,12 +43,25 @@
   []
   (inc (reduce (fn [id item] (if (< id (:id item)) (:id item) id)) 0 @db)))
 
+(defn get-email-parent
+  "Get email parent"
+  [id]
+  (let [comment   (first (filter (fn [my-comment] (= (:id my-comment) id)) @db))
+        parent-id (if (or (empty? (:parent comment)) (nil? (:parent comment))) nil (:parent comment))
+        parent    (if-not (nil? parent-id) (first (filter (fn [my-comment] (= (str parent-id) (str (:id my-comment)))) @db)) nil)]
+    (prn (first (filter (fn [my-comment] (= parent-id (:id my-comment))) @db)))
+    (prn comment)
+    (prn parent-id)
+    (prn parent)
+    (if parent (:email parent) nil)))
+
 (defn add-comment
   "Add new comment"
-  [parent author message token thread]
+  [parent author email message token thread]
   (let [check (captcha/check-token token thread)]
     (if check
-      (let [update-db (conj @db {:id (get-new-id) :parent parent :createdAt (utils/get-unixtime-now) :thread thread :author author :message message})]
+      (let [update-db (conj @db {:id (get-new-id) :parent parent :createdAt (utils/get-unixtime-now) :thread thread :author author :email email :message message})
+            new-id    (get-new-id)]
         (reset! db update-db)
-        (db-save @db)))
-    check))
+        (db-save @db)
+        new-id) nil)))
