@@ -49,10 +49,6 @@
   (let [comment   (first (filter (fn [my-comment] (= (:id my-comment) id)) @db))
         parent-id (if (or (empty? (:parent comment)) (nil? (:parent comment))) nil (:parent comment))
         parent    (if-not (nil? parent-id) (first (filter (fn [my-comment] (= (str parent-id) (str (:id my-comment)))) @db)) nil)]
-    (prn (first (filter (fn [my-comment] (= parent-id (:id my-comment))) @db)))
-    (prn comment)
-    (prn parent-id)
-    (prn parent)
     (if parent (:email parent) nil)))
 
 (defn add-comment
