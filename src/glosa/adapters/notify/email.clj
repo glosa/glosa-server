@@ -28,6 +28,6 @@
                                          :to      [(config :to)]
                                          :subject (config :subject)
                                          :body    [{:type    "text/html"
-                                                    :content (s/render-file template-html-path {:author  author
-                                                                                                :message message
-                                                                                                :thread  thread})}]})))))
+                                                    :content (s/render (slurp template-html-path) {:author  author
+                                                                                                   :message message
+                                                                                                   :thread  thread})}]})))))
