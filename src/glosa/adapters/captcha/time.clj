@@ -1,5 +1,6 @@
 (ns glosa.adapters.captcha.time
   (:require
+   [glosa.config :refer [config]]
    [glosa.models.utils :as utils]
    [clojure.string :as string]
    [cheshire.core :refer [generate-stream parse-stream]]
@@ -19,7 +20,7 @@
 
 (def db (atom (db-load)))
 (def token-len 20)
-(def min-time-seconds 10)
+(def min-time-seconds (if (config :debug) 0 10))
 
 ;; Functions
 

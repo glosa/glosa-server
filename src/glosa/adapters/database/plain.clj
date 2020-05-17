@@ -3,7 +3,8 @@
    [glosa.ports.captcha :as captcha]
    [glosa.models.utils :as utils]
    [cheshire.core :refer [generate-stream parse-stream]]
-   [clojure.java.io :as io]))
+   [clojure.java.io :as io]
+   [clojure.string :refer [blank?]]))
 
 (def db (atom {}))
 (def db-path "db.json")
@@ -47,8 +48,8 @@
   "Get email parent"
   [id]
   (let [comment   (first (filter (fn [my-comment] (= (:id my-comment) id)) @db))
-        parent-id (if (or (empty? (:parent comment)) (nil? (:parent comment))) nil (:parent comment))
-        parent    (if-not (nil? parent-id) (first (filter (fn [my-comment] (= (str parent-id) (str (:id my-comment)))) @db)) nil)]
+        parent-id (:parent comment)
+        parent    (first (filter (fn [my-comment] (= (str parent-id) (str (:id my-comment)))) @db))]
     (if parent (:email parent) nil)))
 
 (defn add-comment
