@@ -32,11 +32,11 @@
 - [How does it work?](#how-does-it-work)
 - [Origin](#origin)
 - [Run](#run)
-- [Create your own JAR](#create-your-own-jar)
 - [Notification template for email](#notification-template-for-email)
 - [API](#api)
 - [Manager script](#manager-script)
 - [Deployment](#deployment)
+- [Create your own JAR](#create-your-own-jar)
 
 ---
 
