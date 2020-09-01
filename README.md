@@ -148,35 +148,6 @@ It will return a random token
 {"token":"OABWNONEOOKXRMMWADPF"}
 ```
 
-## Create your own JAR
-
-1) Make sure you have **openjdk** or **oracle-jdk** installed, **clojure** and  **leiningen**.
-
-### MacOS
-
-``` sh
-brew install openjdk clojure leiningen
-```
-
-### Debian/Ubuntu
-
-``` sh
-sudo apt install default-jdk clojure leiningen
-```
-
-2) Clone the repository and enter the generated folder.
-
-``` sh
-git clone https://github.com/glosa/glosa-server.git
-cd glosa-server
-```
-
-3) Run the following command to build a `jar` file.
-
-`lein uberjar`
-
-After this two files should be created in `target/`. We will use the standalone version: `glosa-{version}-standalone.jar`.
-
 ## Notification template for email
 
 The first time Glosa is run it will create an HTML template with the name `template-email.html`. Edit freely.
@@ -458,6 +429,35 @@ Finally enable and start the service.
 sudo systemctl enable glosa
 sudo systemctl start glosa
 ```
+
+## Create your own JAR
+
+1) Make sure you have **openjdk** or **oracle-jdk** installed, **clojure** and  **leiningen**.
+
+### MacOS
+
+``` sh
+brew install openjdk clojure leiningen
+```
+
+### Debian/Ubuntu
+
+``` sh
+sudo apt install default-jdk clojure leiningen
+```
+
+2) Clone the repository and enter the generated folder.
+
+``` sh
+git clone https://github.com/glosa/glosa-server.git
+cd glosa-server
+```
+
+3) Run the following command to build a `jar` file.
+
+`lein uberjar`
+
+After this two files should be created in `target/`. We will use the standalone version: `glosa-{version}-standalone.jar`.
 
 ---
 
