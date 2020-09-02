@@ -1,10 +1,10 @@
 (ns glosa.adapters.database.plain
   (:require
-   [glosa.ports.captcha :as captcha]
-   [glosa.models.utils :as utils]
-   [cheshire.core :refer [generate-stream parse-stream]]
-   [clojure.java.io :as io]
-   [clojure.string :refer [blank?]]))
+    [glosa.ports.captcha :as captcha]
+    [glosa.models.utils :as utils]
+    [cheshire.core :refer [generate-stream parse-stream]]
+    [clojure.java.io :as io]
+    [clojure.string :as s]))
 
 (def db (atom {}))
 (def db-path "db.json")
@@ -33,6 +33,15 @@
     (if (empty? (str parent-id))
       (count parents-temp)
       (recur parent-id (if (empty? (str parent-id)) [] (conj parents parent-id))))))
+
+(defn get-threads
+  "Get all urls threads"
+    ([]
+     (let [comments (distinct (map (fn [comment] { :thread (:thread comment) }) @db))]
+   comments))
+    ([search]
+     (let [comments (distinct (map (fn [comment] { :thread (:thread comment) }) @db))]
+   (filter (fn [comment] (s/includes? (s/upper-case (:thread comment)) (s/upper-case search))) comments))))
 
 (defn get-comments
   "Find comments from url. Sort by createdAt and Add deep value"
