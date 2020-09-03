@@ -27,21 +27,25 @@
 (defn get-deep
   "Calculate the depth of the commentary. If it is a parent, it will return 0, if it is a sub-comment 1, if it is a sub-comment of a sub-comment 2..."
   [id parents]
-  (let [comment      (first (filter (fn [comment] (= (:id comment) id)) @db))
-        parent-id    (:parent comment)
+  (let [comment (first (filter (fn [comment] (= (:id comment) id)) @db))
+        parent-id (:parent comment)
         parents-temp (if (or (empty? parents) (nil? parents)) [] parents)]
     (if (empty? (str parent-id))
       (count parents-temp)
       (recur parent-id (if (empty? (str parent-id)) [] (conj parents parent-id))))))
 
-(defn get-threads
+(defn get-all-threads
   "Get all urls threads"
-    ([]
-     (let [comments (distinct (map (fn [comment] { :thread (:thread comment) }) @db))]
-   comments))
-    ([search]
-     (let [comments (distinct (map (fn [comment] { :thread (:thread comment) }) @db))]
-   (filter (fn [comment] (s/includes? (s/upper-case (:thread comment)) (s/upper-case search))) comments))))
+  []
+  (distinct (map (fn [comment] {:thread (:thread comment)}) @db)))
+
+(defn get-threads
+  "Search threads"
+  ([]
+   (get-all-threads))
+  ([search]
+     (->> (get-all-threads)
+          (filter (fn [comment] (s/includes? (s/upper-case (:thread comment)) (s/upper-case search)))))))
 
 (defn get-comments
   "Find comments from url. Sort by createdAt and Add deep value"
@@ -56,9 +60,9 @@
 (defn get-email-parent
   "Get email parent"
   [id]
-  (let [comment   (first (filter (fn [my-comment] (= (:id my-comment) id)) @db))
+  (let [comment (first (filter (fn [my-comment] (= (:id my-comment) id)) @db))
         parent-id (:parent comment)
-        parent    (first (filter (fn [my-comment] (= (str parent-id) (str (:id my-comment)))) @db))]
+        parent (first (filter (fn [my-comment] (= (str parent-id) (str (:id my-comment)))) @db))]
     (if parent (:email parent) nil)))
 
 (defn add-comment
@@ -67,7 +71,7 @@
   (let [check (captcha/check-token token thread)]
     (if check
       (let [update-db (conj @db {:id (get-new-id) :parent parent :createdAt (utils/get-unixtime-now) :thread thread :author author :email email :message message})
-            new-id    (get-new-id)]
+            new-id (get-new-id)]
         (reset! db update-db)
         (db-save @db)
         new-id) nil)))

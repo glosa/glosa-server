@@ -2,7 +2,8 @@
   (:require
    [compojure.core :refer [defroutes context GET POST]]
    [compojure.route :as route]
-   [glosa.views.public :as view-public]))
+   [glosa.views.public :as view-public]
+   [glosa.views.private :as view-private]))
 
 (def api-prefix "/api/v1")
 
@@ -14,6 +15,11 @@
            (GET "/captcha/" [] view-public/get-captcha)
            (GET "/ping/" [] view-public/pong)))
 
+(defroutes private
+           ;; Urls public pages
+           (context api-prefix []
+             (GET "/threads/" [] view-private/get-threads)))
+
 (defroutes resources-routes
   ;; Resources (statics)
   (route/resources "/")
@@ -21,4 +27,4 @@
 
 (def all-routes
   ;; Wrap routers. "resources-routes" should always be the last.
-  (compojure.core/routes public resources-routes))
+  (compojure.core/routes public private resources-routes))
