@@ -1,0 +1,7 @@
+
+# All threads
+GET http://localhost:4000/api/v1/threads/
+Content-Type: application/json
+Authorization: Bearer mysecret
+
+{"search": "PyTHon"}
