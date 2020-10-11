@@ -322,7 +322,7 @@ curl 'https://glosa.example:4000/api/v1/ping/'
 ```
 ---
 
-## Manager script
+## Terminal cli
 
 To **manage some minor features** you can use the `manager` script which will filter, modify or delete the database. Previously **remember to stop Glosa** to avoid problems.
 
@@ -458,6 +458,36 @@ cd glosa-server
 `lein uberjar`
 
 After this two files should be created in `target/`. We will use the standalone version: `glosa-{version}-standalone.jar`.
+
+---
+
+## Dev tools
+
+It needs to be executed at the root of the project and have `Leiningen` installed.
+
+### Lint
+
+It checks linguistically and syntaxically if the code is correct.
+
+``` shell
+make lint
+```
+
+### Build
+
+Build a JAR ready to distribute.
+
+``` shell
+make build
+```
+
+### Deploy
+
+Distributed in Clojars.
+
+``` shell
+make deploy
+```
 
 ---
 

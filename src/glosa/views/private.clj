@@ -5,12 +5,12 @@
    [clojure.string :as s]
    [tadam.templates :refer [render-JSON]]
    [tadam.responses :refer [response]]
-   [tadam.utils :refer [get-JSON]]
+   [tadam.utils :refer [get-JSON get-header]]
    [glosa.ports.database :as database]))
 
 (defn check-bearer-token
   [req]
-  (let [authorization-raw    (or (-> req :headers (get "authorization")) "")
+  (let [authorization-raw    (or (get-header req "authorization") "")
         authorization-bearer (s/trim (s/replace authorization-raw #"^Bearer " ""))
         token                (:token config)]
     (= authorization-bearer token)))
@@ -22,5 +22,4 @@
 (defn get-threads
   "Search threads"
   [req]
-  (prn (check-bearer-token req))
   (if (check-bearer-token req) (render-JSON req (database/get-threads (or (:search (get-JSON req)) ""))) (response-401 req)))
