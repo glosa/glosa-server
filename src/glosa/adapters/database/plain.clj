@@ -79,3 +79,13 @@
         (reset! db update-db)
         (db-save @db)
         new-id))))
+
+(defn delete-comment
+  "Delete one comment"
+  [id]
+  ;; Remove comment
+  (let [db-without-id (filter (fn [comment] (not= (str (:id comment)) (str id))) @db)]
+    ;; Update database
+    (reset! db db-without-id)
+    ;; Save data
+    (db-save @db)))

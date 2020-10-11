@@ -1,6 +1,6 @@
 (ns glosa.urls
   (:require
-   [compojure.core :refer [defroutes context GET POST]]
+   [compojure.core :refer [defroutes context GET POST DELETE]]
    [compojure.route :as route]
    [glosa.views.public :as view-public]
    [glosa.views.private :as view-private]))
@@ -16,9 +16,10 @@
            (GET "/ping/" [] view-public/pong)))
 
 (defroutes private
-           ;; Urls public pages
-           (context api-prefix []
-             (GET "/threads/" [] view-private/get-threads)))
+  ;; Urls public pages
+  (context api-prefix []
+           (GET "/threads/" [] view-private/get-threads)
+           (DELETE "/comments/:id" [id] view-private/delete-comment)))
 
 (defroutes resources-routes
   ;; Resources (statics)

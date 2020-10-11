@@ -29,3 +29,9 @@
   "Add new comment"
   [parent author email message token thread]
   (adapter/add-comment parent author email message token thread))
+
+
+(defn delete-comment
+  "Delete one comment"
+  [id]
+  (adapter/delete-comment id))
