@@ -18,7 +18,7 @@
 (defroutes private
   ;; Urls public pages
   (context api-prefix []
-           (GET "/threads/" [] view-private/get-threads)
+           (GET "/threads/search/:query" [] view-private/get-search-threads)
            (DELETE "/comments/" [] view-private/delete-comment)))
 
 (defroutes resources-routes

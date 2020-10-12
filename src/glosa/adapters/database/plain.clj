@@ -39,16 +39,16 @@
   []
   (distinct (map (fn [comment] {:thread (:thread comment)}) @db)))
 
-(defn get-threads
+(defn get-threads-search
   "Search threads"
   ([]
    (get-all-threads))
-  ([search]
+  ([query]
    (filter
      (fn [comment]
        (s/includes?
          (s/upper-case (:thread comment))
-         (s/upper-case search)))
+         (s/upper-case query)))
      (get-all-threads))))
 
 (defn get-comments

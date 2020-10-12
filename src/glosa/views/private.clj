@@ -19,10 +19,10 @@
   [req]
   (response (assoc req :WWW-Authenticate "Basic realm=\"Wrong token\"") "" 401 ""))
 
-(defn get-threads
+(defn get-search-threads
   "Search threads"
   [req]
-  (if (check-bearer-token req) (render-JSON req (database/get-threads (or (:search (get-JSON req)) ""))) (response-401 req)))
+  (if (check-bearer-token req) (render-JSON req (database/get-threads-search (or (-> req :params :query) ""))) (response-401 req)))
 
 (defn delete-comment
   "Delete one comment"

@@ -13,12 +13,12 @@
   [url]
   (adapter/get-comments url))
 
-(defn get-threads
+(defn get-threads-search
   "Find threads from name"
   ([]
-   (adapter/get-threads))
+   (adapter/get-threads-search))
   ([name]
-  (adapter/get-threads name)))
+   (adapter/get-threads-search name)))
 
 (defn get-email-parent
   "Get email from parent comment"
