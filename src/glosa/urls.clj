@@ -19,7 +19,7 @@
   ;; Urls public pages
   (context api-prefix []
            (GET "/threads/" [] view-private/get-threads)
-           (DELETE "/comments/:id" [id] view-private/delete-comment)))
+           (DELETE "/comments/" [] view-private/delete-comment)))
 
 (defroutes resources-routes
   ;; Resources (statics)

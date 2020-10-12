@@ -84,8 +84,11 @@
   "Delete one comment"
   [id]
   ;; Remove comment
-  (let [db-without-id (filter (fn [comment] (not= (bigint (:id comment)) (bigint id))) @db)]
-    ;; Update database
-    (reset! db db-without-id)
-    ;; Save data
-    (db-save @db)))
+  (let [is-exist      (not= (count (filter (fn [comment] (= (bigint (:id comment)) (bigint id))) @db)) 0)
+        db-without-id (filter (fn [comment] (not= (bigint (:id comment)) (bigint id))) @db)]
+    (when is-exist 
+      ;; Update database
+      (reset! db db-without-id)
+      ;; Save data
+      (db-save @db))
+    is-exist))

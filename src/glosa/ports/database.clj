@@ -4,7 +4,7 @@
 
 ;; Enable adapter
 
-(if (= (config :database) "plain") (require '[glosa.adapters.database.plain :as adapter]))
+(when (= (config :database) "plain") (require '[glosa.adapters.database.plain :as adapter]))
 
 ;; Functions
 

@@ -163,11 +163,13 @@ The first time Glosa is run it will create an HTML template with the name `templ
 
 ## Public API
 
-No `token` is required to interact. 
+No `token** is required to interact. 
 
 ### - Get Comments
 
-GET: Gets all the comments on one page.
+Gets all the comments on one page.
+
+** Method **: `GET`
 
 ``` sh
 /api/v1/comments/?url={url}
@@ -220,7 +222,10 @@ curl 'https://programadorwebvalencia.localhost:4000/api/v1/comments/?url=https:/
 
 ### - Add Comment
 
-POST: Add new comment on one page. After saving the comment the token will no longer be valid. At the same time a notification (email) will be sent to the administrator (in the configuration it is called `admin`), in case it is a sub-comment it will also be sent another notification to the parent of the comment if the address is present.
+Add new comment on one page. After saving the comment the token will no longer be valid. At the same time a notification (email) will be sent to the administrator (in the configuration it is called `admin`), in case it is a sub-comment it will also be sent another notification to the parent of the comment if the address is present.
+
+
+** Method **: `POST`
 
 ``` sh
 /api/v1/comments/
@@ -240,7 +245,7 @@ POST: Add new comment on one page. After saving the comment the token will no lo
 Save comment from `https://glosa.example/best-SO/`.
 
 ``` sh
-curl -H "Content-type: application/json" -d '{
+curl -XPOST -H "Content-type: application/json" -d '{
 	"parent": "",
 	"token": "VRJUOBBMTKFQUAFZOKJG",
 	"author": "Juana",
@@ -269,7 +274,9 @@ curl -H "Content-type: application/json" -d '{
 
 ### - Get captcha token
 
-GET: Get a token to validate that a new comment can be created. It has only one use. It must also be obtained 20 seconds before use or it will not work.
+Get a token to validate that a new comment can be created. It has only one use. It must also be obtained 20 seconds before use or it will not work.
+
+** Method **: `GET`
 
 ``` sh
 /api/v1/captcha/?url={url}
@@ -306,7 +313,9 @@ curl 'https://glosa.example:4000/api/v1/captcha/?url=https://glosa.example/best-
 
 ### - Check if he is alive
 
-GET: Simple answer to check that the service is working.
+Simple answer to check that the service is working.
+
+** Method **: `GET`
 
 ``` sh
 /api/v1/ping/
@@ -328,7 +337,56 @@ curl 'https://glosa.example:4000/api/v1/ping/'
 
 ## Private API
 
-You need a `token` to be able to interact. 
+You need a `token` to be able to interact (You will find it in your `config.yaml`). Use a header with Bearer authorization on each request.
+
+Example with `mysecret` token.
+
+``` sh
+curl -XDELETE -H "Authorization: Bearer mysecret" -H "Content-type: application/json" ...
+```
+
+### - Delete Comment
+
+Delete a comment for ID.
+
+** Method **: `DELETE`
+
+``` sh
+/api/v1/comments/
+```
+
+| Param | Value | Description |
+|---|---|---|
+| id  | number | Comment ID. |
+
+#### Example
+
+Delete comment from `https://glosa.example/api/v1/comments/1234`.
+
+``` sh
+curl -XDELETE -H "Authorization: Bearer mysecret" -H "Content-type: application/json" -d '{
+    "id": 1234
+}' 'https://glosa.example:4000/api/v1/comments/
+```
+
+#### Success response
+
+``` json
+{
+  "deleted": true,
+  "id": 1234
+}
+```
+
+#### Fail response
+
+
+``` json
+{
+  "deleted": false,
+  "id": 1234
+}
+```
 
 ---
 
