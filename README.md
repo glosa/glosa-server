@@ -169,7 +169,7 @@ No `token** is required to interact.
 
 Gets all the comments on one page.
 
-** Method **: `GET`
+**Method**: `GET`
 
 ``` sh
 /api/v1/comments/?url={url}
@@ -225,7 +225,7 @@ curl 'https://programadorwebvalencia.localhost:4000/api/v1/comments/?url=https:/
 Add new comment on one page. After saving the comment the token will no longer be valid. At the same time a notification (email) will be sent to the administrator (in the configuration it is called `admin`), in case it is a sub-comment it will also be sent another notification to the parent of the comment if the address is present.
 
 
-** Method **: `POST`
+**Method**: `POST`
 
 ``` sh
 /api/v1/comments/
@@ -276,7 +276,7 @@ curl -XPOST -H "Content-type: application/json" -d '{
 
 Get a token to validate that a new comment can be created. It has only one use. It must also be obtained 20 seconds before use or it will not work.
 
-** Method **: `GET`
+**Method**: `GET`
 
 ``` sh
 /api/v1/captcha/?url={url}
@@ -315,7 +315,7 @@ curl 'https://glosa.example:4000/api/v1/captcha/?url=https://glosa.example/best-
 
 Simple answer to check that the service is working.
 
-** Method **: `GET`
+**Method**: `GET`
 
 ``` sh
 /api/v1/ping/
@@ -349,7 +349,7 @@ curl -XDELETE -H "Authorization: Bearer mysecret" -H "Content-type: application/
 
 Delete a comment for ID.
 
-** Method **: `DELETE`
+**Method**: `DELETE`
 
 ``` sh
 /api/v1/comments/
@@ -391,7 +391,7 @@ curl -XDELETE -H "Authorization: Bearer mysecret" -H "Content-type: application/
 
 Search for all urls containing a certain string ignoring uppercase.
 
-** Method **: `GET`
+**Method**: `GET`
 
 ``` sh
 /api/threads/search/{query}
@@ -403,7 +403,7 @@ Search for all urls containing a certain string ignoring uppercase.
 
 #### Example
 
-Delete comment from `https://glosa.example/api/threads/search/tadam`.
+Search all threads with  `tadam`.
 
 ``` sh
 curl -H "Authorization: Bearer mysecret" 'https://glosa.example:4000/api/threads/search/tadam'
@@ -418,8 +418,7 @@ curl -H "Authorization: Bearer mysecret" 'https://glosa.example:4000/api/threads
   },
   {
     "thread": "https://my.blog/best-web-framework-clojure-tadam"
-  },
-  ...
+  }
 ]
 ```
 
