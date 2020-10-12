@@ -8,8 +8,10 @@
 
 ## Amazing reasons to use it
 
+- **Opensource**.
 - **Very fast**, responses between 5ms and 15ms on average.
 - Easy to integrate with **static pages**.
+- **APP for desktop, mobile and terminal** to manage comments: Delete, update, reply...
 - **Easy to import** from Disqus.
 - **No database**, everything is stored in a JSON.
 - Configuration in a **simple YAML**.
@@ -17,7 +19,6 @@
 - **Receive an email** for each new comment.
 - **Users are notified** by email if they are answered.
 - **Multisite**: Single server for multiple websites.
-- **Opensource**.
 
 ## [Video Demo](https://cdn.jsdelivr.net/gh/glosa/glosa-static-integration/media/demo.mp4)
 
@@ -98,6 +99,8 @@ debug: false
 # It can be a domain in case of using a proxy: example.com
 domain: localhost
 port: 4000
+# Access for APP
+token: mysecret
 # It indicates which domain can use it. Debug true so there are no limitations.
 domain-cli: "http://example-cli.com/"
 
@@ -158,7 +161,9 @@ The first time Glosa is run it will create an HTML template with the name `templ
 
 ---
 
-## API
+## Public API
+
+No `token` is required to interact. 
 
 ### - Get Comments
 
@@ -320,6 +325,11 @@ curl 'https://glosa.example:4000/api/v1/ping/'
     "ping": "pong"
 }
 ```
+
+## Private API
+
+You need a `token` to be able to interact. 
+
 ---
 
 ## Terminal cli
