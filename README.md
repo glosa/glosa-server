@@ -35,7 +35,7 @@
 - [Run](#run)
 - [Notification template for email](#notification-template-for-email)
 - [API](#api)
-- [Manager script](#manager-script)
+- [Terminal cli](#terminal-cli)
 - [Deployment](#deployment)
 - [Create your own JAR](#create-your-own-jar)
 
@@ -386,6 +386,48 @@ curl -XDELETE -H "Authorization: Bearer mysecret" -H "Content-type: application/
   "deleted": false,
   "id": 1234
 }
+```
+### - Search Threads
+
+Search for all urls containing a certain string ignoring uppercase.
+
+** Method **: `GET`
+
+``` sh
+/api/threads/search/{query}
+```
+
+| Param | Value | Description |
+|---|---|---|
+| query  | string | String to search. |
+
+#### Example
+
+Delete comment from `https://glosa.example/api/threads/search/tadam`.
+
+``` sh
+curl -H "Authorization: Bearer mysecret" 'https://glosa.example:4000/api/threads/search/tadam'
+```
+
+#### Success response
+
+``` json
+[
+  {
+    "thread": "https://my.blog/tadam-vs-pedestal/"
+  },
+  {
+    "thread": "https://my.blog/best-web-framework-clojure-tadam"
+  },
+  ...
+]
+```
+
+#### Fail response
+
+
+``` json
+[]
 ```
 
 ---
