@@ -18,7 +18,7 @@
   "Load database"
   []
   ;; Generate file if not exist
-  (if-not (.exists (io/file db-path)) (clojure.java.io/writer db-path))
+  (when-not (.exists (io/file db-path)) (clojure.java.io/writer db-path))
   ;; Get JSON
   (reset! db (parse-stream (clojure.java.io/reader db-path) true)))
 
@@ -84,7 +84,7 @@
   "Delete one comment"
   [id]
   ;; Remove comment
-  (let [db-without-id (filter (fn [comment] (not= (str (:id comment)) (str id))) @db)]
+  (let [db-without-id (filter (fn [comment] (not= (bigint (:id comment)) (bigint id))) @db)]
     ;; Update database
     (reset! db db-without-id)
     ;; Save data

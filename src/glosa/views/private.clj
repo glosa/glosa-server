@@ -28,7 +28,7 @@
   "Delete one comment"
   [req]
   (if (check-bearer-token req)
-    (doall
+    (do
       (database/delete-comment (-> req :params :id))
       (render-JSON req {:deleted true :id (-> req :params :id)})
       ) (response-401 req)))

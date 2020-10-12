@@ -7,9 +7,5 @@ Authorization: Bearer mysecret
 {"search": "PyTHon"}
 
 # Delete comment
-DELETE http://localhost:4000/api/v1/comments/4889630289
-Authorization: Bearer mysecret
-
-
-DELETE http://localhost:4000/api/v1/comments/4889630288
+DELETE http://localhost:4000/api/v1/comments/4889630295
 Authorization: Bearer mysecret
