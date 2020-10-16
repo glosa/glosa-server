@@ -4,6 +4,8 @@ debug: false
 # It can be a domain in case of using a proxy: example.com
 domain: localhost
 port: 4000
+# Example -> Authorization: Bearer mysecret
+token: mysecret
 # It indicates which domain can use it. Debug true so there are no limitations.
 domain-cli: "http://example-cli.com/"
 

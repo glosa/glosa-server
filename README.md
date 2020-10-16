@@ -8,8 +8,10 @@
 
 ## Amazing reasons to use it
 
+- **Opensource**.
 - **Very fast**, responses between 5ms and 15ms on average.
 - Easy to integrate with **static pages**.
+- **APP for desktop, mobile and terminal** to manage comments: Delete, update, reply...
 - **Easy to import** from Disqus.
 - **No database**, everything is stored in a JSON.
 - Configuration in a **simple YAML**.
@@ -17,7 +19,6 @@
 - **Receive an email** for each new comment.
 - **Users are notified** by email if they are answered.
 - **Multisite**: Single server for multiple websites.
-- **Opensource**.
 
 ## [Video Demo](https://cdn.jsdelivr.net/gh/glosa/glosa-static-integration/media/demo.mp4)
 
@@ -34,7 +35,7 @@
 - [Run](#run)
 - [Notification template for email](#notification-template-for-email)
 - [API](#api)
-- [Manager script](#manager-script)
+- [Terminal cli](#terminal-cli)
 - [Deployment](#deployment)
 - [Create your own JAR](#create-your-own-jar)
 
@@ -98,6 +99,8 @@ debug: false
 # It can be a domain in case of using a proxy: example.com
 domain: localhost
 port: 4000
+# Access for APP
+token: mysecret
 # It indicates which domain can use it. Debug true so there are no limitations.
 domain-cli: "http://example-cli.com/"
 
@@ -158,11 +161,15 @@ The first time Glosa is run it will create an HTML template with the name `templ
 
 ---
 
-## API
+## Public API
+
+No `token** is required to interact. 
 
 ### - Get Comments
 
-GET: Gets all the comments on one page.
+Gets all the comments on one page.
+
+**Method**: `GET`
 
 ``` sh
 /api/v1/comments/?url={url}
@@ -215,7 +222,10 @@ curl 'https://programadorwebvalencia.localhost:4000/api/v1/comments/?url=https:/
 
 ### - Add Comment
 
-POST: Add new comment on one page. After saving the comment the token will no longer be valid. At the same time a notification (email) will be sent to the administrator (in the configuration it is called `admin`), in case it is a sub-comment it will also be sent another notification to the parent of the comment if the address is present.
+Add new comment on one page. After saving the comment the token will no longer be valid. At the same time a notification (email) will be sent to the administrator (in the configuration it is called `admin`), in case it is a sub-comment it will also be sent another notification to the parent of the comment if the address is present.
+
+
+**Method**: `POST`
 
 ``` sh
 /api/v1/comments/
@@ -235,7 +245,7 @@ POST: Add new comment on one page. After saving the comment the token will no lo
 Save comment from `https://glosa.example/best-SO/`.
 
 ``` sh
-curl -H "Content-type: application/json" -d '{
+curl -XPOST -H "Content-type: application/json" -d '{
 	"parent": "",
 	"token": "VRJUOBBMTKFQUAFZOKJG",
 	"author": "Juana",
@@ -264,7 +274,9 @@ curl -H "Content-type: application/json" -d '{
 
 ### - Get captcha token
 
-GET: Get a token to validate that a new comment can be created. It has only one use. It must also be obtained 20 seconds before use or it will not work.
+Get a token to validate that a new comment can be created. It has only one use. It must also be obtained 20 seconds before use or it will not work.
+
+**Method**: `GET`
 
 ``` sh
 /api/v1/captcha/?url={url}
@@ -301,7 +313,9 @@ curl 'https://glosa.example:4000/api/v1/captcha/?url=https://glosa.example/best-
 
 ### - Check if he is alive
 
-GET: Simple answer to check that the service is working.
+Simple answer to check that the service is working.
+
+**Method**: `GET`
 
 ``` sh
 /api/v1/ping/
@@ -320,9 +334,104 @@ curl 'https://glosa.example:4000/api/v1/ping/'
     "ping": "pong"
 }
 ```
+
+## Private API
+
+You need a `token` to be able to interact (You will find it in your `config.yaml`). Use a header with Bearer authorization on each request.
+
+Example with `mysecret` token.
+
+``` sh
+curl -XDELETE -H "Authorization: Bearer mysecret" -H "Content-type: application/json" ...
+```
+
+### - Delete Comment
+
+Delete a comment for ID.
+
+**Method**: `DELETE`
+
+``` sh
+/api/v1/comments/
+```
+
+| Param | Value | Description |
+|---|---|---|
+| id  | number | Comment ID. |
+
+#### Example
+
+Delete comment from `https://glosa.example/api/v1/comments/1234`.
+
+``` sh
+curl -XDELETE -H "Authorization: Bearer mysecret" -H "Content-type: application/json" -d '{
+    "id": 1234
+}' 'https://glosa.example:4000/api/v1/comments/
+```
+
+#### Success response
+
+``` json
+{
+  "deleted": true,
+  "id": 1234
+}
+```
+
+#### Fail response
+
+
+``` json
+{
+  "deleted": false,
+  "id": 1234
+}
+```
+### - Search Threads
+
+Search for all urls containing a certain string ignoring uppercase.
+
+**Method**: `GET`
+
+``` sh
+/api/threads/search/{query}
+```
+
+| Param | Value | Description |
+|---|---|---|
+| query  | string | String to search. |
+
+#### Example
+
+Search all threads with  `tadam`.
+
+``` sh
+curl -H "Authorization: Bearer mysecret" 'https://glosa.example:4000/api/threads/search/tadam'
+```
+
+#### Success response
+
+``` json
+[
+  {
+    "thread": "https://my.blog/tadam-vs-pedestal/"
+  },
+  {
+    "thread": "https://my.blog/best-web-framework-clojure-tadam"
+  }
+]
+```
+
+#### Fail response
+
+
+``` json
+[]
+```
+
 ---
 
-## Manager script
+## Terminal cli
 
 To **manage some minor features** you can use the `manager` script which will filter, modify or delete the database. Previously **remember to stop Glosa** to avoid problems.
 
@@ -458,6 +567,36 @@ cd glosa-server
 `lein uberjar`
 
 After this two files should be created in `target/`. We will use the standalone version: `glosa-{version}-standalone.jar`.
+
+---
+
+## Dev tools
+
+It needs to be executed at the root of the project and have `Leiningen` installed.
+
+### Lint
+
+It checks linguistically and syntaxically if the code is correct.
+
+``` shell
+make lint
+```
+
+### Build
+
+Build a JAR ready to distribute.
+
+``` shell
+make build
+```
+
+### Deploy
+
+Distributed in Clojars.
+
+``` shell
+make deploy
+```
 
 ---
 

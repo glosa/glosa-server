@@ -4,7 +4,7 @@
 
 ;; Enable adapter
 
-(if (= (config :database) "plain") (require '[glosa.adapters.database.plain :as adapter]))
+(when (= (config :database) "plain") (require '[glosa.adapters.database.plain :as adapter]))
 
 ;; Functions
 
@@ -12,6 +12,13 @@
   "Find comments from url"
   [url]
   (adapter/get-comments url))
+
+(defn get-threads-search
+  "Find threads from name"
+  ([]
+   (adapter/get-threads-search))
+  ([name]
+   (adapter/get-threads-search name)))
 
 (defn get-email-parent
   "Get email from parent comment"
@@ -22,3 +29,9 @@
   "Add new comment"
   [parent author email message token thread]
   (adapter/add-comment parent author email message token thread))
+
+
+(defn delete-comment
+  "Delete one comment"
+  [id]
+  (adapter/delete-comment id))

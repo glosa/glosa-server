@@ -1,10 +1,10 @@
 (ns glosa.adapters.database.plain
   (:require
-   [glosa.ports.captcha :as captcha]
-   [glosa.models.utils :as utils]
-   [cheshire.core :refer [generate-stream parse-stream]]
-   [clojure.java.io :as io]
-   [clojure.string :refer [blank?]]))
+    [glosa.ports.captcha :as captcha]
+    [glosa.models.utils :as utils]
+    [cheshire.core :refer [generate-stream parse-stream]]
+    [clojure.java.io :as io]
+    [clojure.string :as s]))
 
 (def db (atom {}))
 (def db-path "db.json")
@@ -18,7 +18,7 @@
   "Load database"
   []
   ;; Generate file if not exist
-  (if-not (.exists (io/file db-path)) (clojure.java.io/writer db-path))
+  (when-not (.exists (io/file db-path)) (clojure.java.io/writer db-path))
   ;; Get JSON
   (reset! db (parse-stream (clojure.java.io/reader db-path) true)))
 
@@ -27,12 +27,29 @@
 (defn get-deep
   "Calculate the depth of the commentary. If it is a parent, it will return 0, if it is a sub-comment 1, if it is a sub-comment of a sub-comment 2..."
   [id parents]
-  (let [comment      (first (filter (fn [comment] (= (:id comment) id)) @db))
-        parent-id    (:parent comment)
+  (let [comment (first (filter (fn [comment] (= (:id comment) id)) @db))
+        parent-id (:parent comment)
         parents-temp (if (or (empty? parents) (nil? parents)) [] parents)]
     (if (empty? (str parent-id))
       (count parents-temp)
       (recur parent-id (if (empty? (str parent-id)) [] (conj parents parent-id))))))
+
+(defn get-all-threads
+  "Get all urls threads"
+  []
+  (distinct (map (fn [comment] {:thread (:thread comment)}) @db)))
+
+(defn get-threads-search
+  "Search threads"
+  ([]
+   (get-all-threads))
+  ([query]
+   (filter
+     (fn [comment]
+       (s/includes?
+         (s/upper-case (:thread comment))
+         (s/upper-case query)))
+     (get-all-threads))))
 
 (defn get-comments
   "Find comments from url. Sort by createdAt and Add deep value"
@@ -50,15 +67,28 @@
   (let [comment   (first (filter (fn [my-comment] (= (:id my-comment) id)) @db))
         parent-id (:parent comment)
         parent    (first (filter (fn [my-comment] (= (str parent-id) (str (:id my-comment)))) @db))]
-    (if parent (:email parent) nil)))
+    (when parent (:email parent))))
 
 (defn add-comment
   "Add new comment"
   [parent author email message token thread]
   (let [check (captcha/check-token token thread)]
-    (if check
+    (when check
       (let [update-db (conj @db {:id (get-new-id) :parent parent :createdAt (utils/get-unixtime-now) :thread thread :author author :email email :message message})
             new-id    (get-new-id)]
         (reset! db update-db)
         (db-save @db)
-        new-id) nil)))
+        new-id))))
+
+(defn delete-comment
+  "Delete one comment"
+  [id]
+  ;; Remove comment
+  (let [is-exist      (not= (count (filter (fn [comment] (= (bigint (:id comment)) (bigint id))) @db)) 0)
+        db-without-id (filter (fn [comment] (not= (bigint (:id comment)) (bigint id))) @db)]
+    (when is-exist 
+      ;; Update database
+      (reset! db db-without-id)
+      ;; Save data
+      (db-save @db))
+    is-exist))
