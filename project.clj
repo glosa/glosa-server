@@ -6,7 +6,7 @@
   :dependencies [;; Clojure
                  [org.clojure/clojure "1.10.1"]
                  ;; Tadam core
-                 [tadam-core "0.3.5"]
+                 [tadam-core "0.4.4"]
                  ;; HTTP Server
                  [ring "1.8.0"]
                  ;; Ring middleware that prevents CSRF attacks
@@ -25,17 +25,17 @@
                  ;; Yaml
                  [clj-yaml "0.4.0"]
                  ;; SMTP
-                 [com.draines/postal "2.0.3"]]
+                 [com.draines/postal "2.0.3"]
+                 ;; Linter
+                 [clj-kondo "RELEASE"]]
   :plugins [;; DEV TOOLS
             ;;; Check idiomatic bug
-            [lein-kibit "0.1.7"]
-            ;;; Check format
-            [lein-cljfmt "0.6.4"]]
+            [lein-kibit "0.1.7"]]
   ;; Map configuration for Ring
   :ring {:handler glosa.core.wrapped-handler}
   ;; ALIAS
   :aliases {"check-idiomatic" ["kibit" "src"]
-            "check-format"    ["cljfmt" "check"]}
+            "check-lint"      ["run" "-m" "clj-kondo.main" "--lint" "src"]}
   ;; LEIN
   :main ^:skip-aot glosa.core
   :aot  [glosa.core]

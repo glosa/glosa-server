@@ -17,7 +17,7 @@
 
 (template-email-load)
 
-(defn send
+(defn send-notify
   "Send email"
   [id author message thread]
   (.start (Thread. (fn []

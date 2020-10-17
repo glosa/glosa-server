@@ -3,8 +3,7 @@
    [glosa.config :refer [config]]))
 
 ;; Enable adapter
-
-(if (= (config :captcha) "time") (require '[glosa.adapters.captcha.time :as adapter]))
+(when (= (config :captcha) "time") (require '[glosa.adapters.captcha.time :as adapter]))
 
 ;; Functions
 

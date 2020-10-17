@@ -14,7 +14,7 @@
   "Load database"
   []
   ;; Generate file if not exist
-  (if-not (.exists (io/file db-path)) (clojure.java.io/writer db-path))
+  (when-not (.exists (io/file db-path)) (clojure.java.io/writer db-path))
   ;; Get JSON
   (parse-stream (clojure.java.io/reader db-path) true))
 
@@ -67,6 +67,6 @@
   [token url]
   (let [now   (utils/get-unixtime-now)
         valid (some (fn [item] (and (= (item :token) token) (< (+ (item :createdAt now) min-time-seconds) now) (= (item :url) url))) @db)]
-    (if valid (reset! db (filter (fn [item] (not= (:token item) token)) @db))) ;; Remove token
+    (when valid (reset! db (filter (fn [item] (not= (:token item) token)) @db))) ;; Remove token
     (clear-tokens-old)
     (not (nil? valid))))
