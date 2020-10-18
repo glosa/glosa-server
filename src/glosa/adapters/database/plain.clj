@@ -80,6 +80,24 @@
         (db-save @db)
         new-id))))
 
+(defn update-comment
+  "Update one comment"
+  [id parent author email message]
+  ;; Remove comment
+  (let [is-exist               (not= (count (filter (fn [comment] (= (bigint (:id comment)) (bigint id))) @db)) 0)
+        db-with-update-comment (map (fn [comment] (if (= (bigint (:id comment)) (bigint id)) (assoc comment
+                                                                                                    :id id
+                                                                                                    :parent parent
+                                                                                                    :author author
+                                                                                                    :email email
+                                                                                                    :message message) comment) @db))]
+    (when is-exist
+      ;; Update database
+      (reset! db db-with-update-comment)
+      ;; Save data
+      (db-save @db))
+    is-exist))
+
 (defn delete-comment
   "Delete one comment"
   [id]

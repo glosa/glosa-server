@@ -3,7 +3,6 @@
    [glosa.config :refer [config]]))
 
 ;; Enable adapter
-
 (when (= (config :database) "plain") (require '[glosa.adapters.database.plain :as adapter]))
 
 ;; Functions
@@ -30,6 +29,10 @@
   [parent author email message token thread]
   (adapter/add-comment parent author email message token thread))
 
+(defn update-comment
+  "Update comment"
+  [id parent author email message]
+  (adapter/update-comment id parent author email message))
 
 (defn delete-comment
   "Delete one comment"

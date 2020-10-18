@@ -1,13 +1,25 @@
 
 # All threads
-GET http://localhost:4000/api/v1/threads/
+GET http://localhost:4000/api/v1/threads/search/pyTHon
 Content-Type: application/json
 Authorization: Bearer mysecret
 
-{"search": "PyTHon"}
+# Update comment
+PUT http://localhost:4000/api/v1/comments/
+Content-Type: application/json
+Authorization: Bearer mysecret
+
+{
+  "id": 4889630296,
+  "parent": 0,
+  "author": "Juan",
+  "email": "my@email.com",
+  "message": "hi my friend"
+}
 
 # Delete comment
 DELETE http://localhost:4000/api/v1/comments/
+Content-Type: application/json
 Authorization: Bearer mysecret
 
 {"id": 4889630296}
