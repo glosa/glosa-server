@@ -10,10 +10,10 @@ Content-Type: application/json
 Authorization: Bearer mysecret
 
 {
-  "id": 4889630296,
-  "parent": 0,
-  "author": "Juan",
-  "email": "my@email.com",
+  "id": 4889630303,
+  "parent": "",
+  "author": "Julio",
+  "email": "my@ide.com",
   "message": "hi my friend"
 }
 

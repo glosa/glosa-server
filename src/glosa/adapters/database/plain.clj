@@ -1,10 +1,10 @@
 (ns glosa.adapters.database.plain
   (:require
-    [glosa.ports.captcha :as captcha]
-    [glosa.models.utils :as utils]
-    [cheshire.core :refer [generate-stream parse-stream]]
-    [clojure.java.io :as io]
-    [clojure.string :as s]))
+   [glosa.ports.captcha :as captcha]
+   [glosa.models.utils :as utils]
+   [cheshire.core :refer [generate-stream parse-stream]]
+   [clojure.java.io :as io]
+   [clojure.string :as s]))
 
 (def db (atom {}))
 (def db-path "db.json")
@@ -27,8 +27,8 @@
 (defn get-deep
   "Calculate the depth of the commentary. If it is a parent, it will return 0, if it is a sub-comment 1, if it is a sub-comment of a sub-comment 2..."
   [id parents]
-  (let [comment (first (filter (fn [comment] (= (:id comment) id)) @db))
-        parent-id (:parent comment)
+  (let [comment      (first (filter (fn [comment] (= (:id comment) id)) @db))
+        parent-id    (:parent comment)
         parents-temp (if (or (empty? parents) (nil? parents)) [] parents)]
     (if (empty? (str parent-id))
       (count parents-temp)
@@ -88,9 +88,9 @@
         db-with-update-comment (map (fn [comment] (if (= (bigint (:id comment)) (bigint id)) (assoc comment
                                                                                                     :id id
                                                                                                     :parent parent
-                                                                                                    :author author
-                                                                                                    :email email
-                                                                                                    :message message) comment) @db))]
+                                                                                                    :author (str author)
+                                                                                                    :email (str email)
+                                                                                                    :message (str message)) comment)) @db)]
     (when is-exist
       ;; Update database
       (reset! db db-with-update-comment)
@@ -104,7 +104,7 @@
   ;; Remove comment
   (let [is-exist      (not= (count (filter (fn [comment] (= (bigint (:id comment)) (bigint id))) @db)) 0)
         db-without-id (filter (fn [comment] (not= (bigint (:id comment)) (bigint id))) @db)]
-    (when is-exist 
+    (when is-exist
       ;; Update database
       (reset! db db-without-id)
       ;; Save data
