@@ -31,8 +31,8 @@
 
 (defn update-comment
   "Update comment"
-  [id parent author email message]
-  (adapter/update-comment id parent author email message))
+  [id author email message]
+  (adapter/update-comment id author email message))
 
 (defn delete-comment
   "Delete one comment"

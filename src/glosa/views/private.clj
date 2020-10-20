@@ -31,12 +31,11 @@
   [req]
   (let [data    (get-JSON req)
         id      (:id data)
-        parent  (:parent data)
         author  (:author data)
         email   (:email data)
         message (:message data)]
     (if (check-bearer-token req)
-      (render-JSON req {:updated (database/update-comment id parent author email message) :id (bigint id)})
+      (render-JSON req {:updated (database/update-comment id author email message) :id (bigint id)})
       (response-401 req))))
 
 (defn delete-comment
