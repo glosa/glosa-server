@@ -36,4 +36,4 @@
 (defn status-404
   "Page 404"
   [req]
-  (render-JSON req {} 404))
+  (render-JSON req {:status "Not found"} 404))

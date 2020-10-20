@@ -22,13 +22,27 @@
 (defn get-search-threads
   "Search threads"
   [req]
-  (if (check-bearer-token req) (render-JSON req (database/get-threads-search (or (-> req :params :query) ""))) (response-401 req)))
+  (if (check-bearer-token req)
+    (render-JSON req (database/get-threads-search (or (-> req :params :query) "")))
+    (response-401 req)))
+
+(defn update-comment
+  "Update one comment"
+  [req]
+  (let [data    (get-JSON req)
+        id      (:id data)
+        author  (:author data)
+        email   (:email data)
+        message (:message data)]
+    (if (check-bearer-token req)
+      (render-JSON req {:updated (database/update-comment id author email message) :id (bigint id)})
+      (response-401 req))))
 
 (defn delete-comment
-  "Delete one comment"
-  [req]
-  (let [id (:id (get-JSON req))]
-    (if (check-bearer-token req)
-      (render-JSON req {:deleted (database/delete-comment id) :id (bigint id)})
-      (response-401 req))))
+"Delete one comment"
+[req]
+(let [id (:id (get-JSON req))]
+  (if (check-bearer-token req)
+    (render-JSON req {:deleted (database/delete-comment id) :id (bigint id)})
+    (response-401 req))))
 

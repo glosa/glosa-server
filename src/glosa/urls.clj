@@ -1,6 +1,6 @@
 (ns glosa.urls
   (:require
-   [compojure.core :refer [defroutes context GET POST DELETE]]
+   [compojure.core :refer [defroutes context GET POST PUT DELETE]]
    [compojure.route :as route]
    [glosa.views.public :as view-public]
    [glosa.views.private :as view-private]))
@@ -19,6 +19,7 @@
   ;; Urls public pages
   (context api-prefix []
            (GET "/threads/search/:query" [] view-private/get-search-threads)
+           (PUT "/comments/" [] view-private/update-comment)
            (DELETE "/comments/" [] view-private/delete-comment)))
 
 (defroutes resources-routes

@@ -163,7 +163,7 @@ The first time Glosa is run it will create an HTML template with the name `templ
 
 ## Public API
 
-No `token** is required to interact. 
+No `token` is required to interact. 
 
 ### - Get Comments
 
@@ -337,13 +337,63 @@ curl 'https://glosa.example:4000/api/v1/ping/'
 
 ## Private API
 
-You need a `token` to be able to interact (You will find it in your `config.yaml`). Use a header with Bearer authorization on each request.
+You need a `token` to be able to interact (You will find it in your `config.yaml`). Use a **header with Bearer authorization** on each request.
 
 Example with `mysecret` token.
 
 ``` sh
 curl -XDELETE -H "Authorization: Bearer mysecret" -H "Content-type: application/json" ...
 ```
+### - Update Comment
+
+Update a comment for ID.
+
+**Method**: `PUT`
+
+``` sh
+/api/v1/comments/
+```
+
+| Param | Value | Description |
+|---|---|---|
+| id  | number | Comment ID. |
+| author  | string | Author's name. |
+| email  | string | Email that the user will be notified of the responses to his comment. Leave blank if not desired. |
+| message  | string | Message. It can be HTML or plain. |
+
+
+#### Example
+
+Update comment from `https://glosa.example/api/v1/comments/1234`.
+
+``` sh
+curl -XPUT -H "Authorization: Bearer mysecret" -H "Content-type: application/json" -d '{
+    "id": 1234
+    "author": "Alex",
+    "email": "alex@my.email",
+    "message": "I love the article."
+}' 'https://glosa.example:4000/api/v1/comments/
+```
+
+#### Success response
+
+``` json
+{
+  "updated": true,
+  "id": 1234
+}
+```
+
+#### Fail response
+
+
+``` json
+{
+  "updated": false,
+  "id": 1234
+}
+```
+
 
 ### - Delete Comment
 
