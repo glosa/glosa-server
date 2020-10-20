@@ -163,7 +163,7 @@ The first time Glosa is run it will create an HTML template with the name `templ
 
 ## Public API
 
-No `token** is required to interact. 
+No `token` is required to interact. 
 
 ### - Get Comments
 
