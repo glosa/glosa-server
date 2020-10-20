@@ -163,6 +163,27 @@ The first time Glosa is run it will create an HTML template with the name `templ
 
 ## API
 
+
+- [Get Comments](#get-comments) (Public)
+- [Add Comments](#add-comments) (Public)
+- [Update Comment](#update-comment) (Private)
+- [Delete Comment](#delete-comment) (Private)
+- [Search Threads](#search-threads) (Private)
+- [Get captcha token](#get-captcha-token) (Public)
+- [Check if he is alive](#check-if-he-is-alive) (Public**
+
+### Authorization
+
+**Only privates***.
+
+You need a `token` to be able to interact (You will find it in your `config.yaml`). Use a **header with Bearer authorization** on each request.
+
+Example with `mysecret` token.
+
+``` sh
+curl -XDELETE -H "Authorization: Bearer mysecret" -H "Content-type: application/json" ...
+```
+
 ### Public
 
 No `token` is required to interact. 
@@ -339,13 +360,6 @@ curl 'http://localhost:4000/api/v1/ping/'
 
 ### Private
 
-You need a `token` to be able to interact (You will find it in your `config.yaml`). Use a **header with Bearer authorization** on each request.
-
-Example with `mysecret` token.
-
-``` sh
-curl -XDELETE -H "Authorization: Bearer mysecret" -H "Content-type: application/json" ...
-```
 #### Update Comment
 
 Update a comment for ID.
