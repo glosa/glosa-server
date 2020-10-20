@@ -181,10 +181,10 @@ Gets all the comments on one page.
 
 #### Example
 
-Get from `https://glosa.example/best-SO/`.
+Get from `http://glosa.example/best-SO/`.
 
 ``` sh
-curl 'https://programadorwebvalencia.localhost:4000/api/v1/comments/?url=https://glosa.example/best-SO/'
+curl 'http://localhost:4000/api/v1/comments/?url=https://glosa.example/best-SO/'
 ```
 
 #### Success response
@@ -252,7 +252,7 @@ curl -XPOST -H "Content-type: application/json" -d '{
     "email": "juana@my.email",
 	"message": "I like it very much.",
 	"thread":"https://glosa.example/best-SO/"
-}' 'https://glosa.example:4000/api/v1/comments/'
+}' 'http://localhost:4000/api/v1/comments/'
 ```
 
 #### Success response
@@ -291,7 +291,7 @@ Get a token to validate that a new comment can be created. It has only one use. 
 Get token for page `https://glosa.example/best-SO/`.
 
 ``` sh
-curl 'https://glosa.example:4000/api/v1/captcha/?url=https://glosa.example/best-SO/'
+curl 'http://localhost:4000/api/v1/captcha/?url=https://glosa.example/best-SO/'
 ```
 
 #### Success response
@@ -324,7 +324,7 @@ Simple answer to check that the service is working.
 #### Example
 
 ``` sh
-curl 'https://glosa.example:4000/api/v1/ping/'
+curl 'http://localhost:4000/api/v1/ping/'
 ```
 
 #### Success response
@@ -372,7 +372,7 @@ curl -XPUT -H "Authorization: Bearer mysecret" -H "Content-type: application/jso
     "author": "Alex",
     "email": "alex@my.email",
     "message": "I love the article."
-}' 'https://glosa.example:4000/api/v1/comments/
+}' 'http://localhost:4000/api/v1/comments/
 ```
 
 #### Success response
@@ -416,7 +416,7 @@ Delete comment from `https://glosa.example/api/v1/comments/1234`.
 ``` sh
 curl -XDELETE -H "Authorization: Bearer mysecret" -H "Content-type: application/json" -d '{
     "id": 1234
-}' 'https://glosa.example:4000/api/v1/comments/
+}' 'http://localhost:4000/api/v1/comments/
 ```
 
 #### Success response
@@ -456,7 +456,7 @@ Search for all urls containing a certain string ignoring uppercase.
 Search all threads with  `tadam`.
 
 ``` sh
-curl -H "Authorization: Bearer mysecret" 'https://glosa.example:4000/api/threads/search/tadam'
+curl -H "Authorization: Bearer mysecret" 'http://localhost:4000/api/threads/search/tadam'
 ```
 
 #### Success response
