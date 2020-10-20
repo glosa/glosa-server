@@ -165,16 +165,16 @@ The first time Glosa is run it will create an HTML template with the name `templ
 
 
 - [Get Comments](#get-comments) (Public)
-- [Add Comments](#add-comments) (Public)
+- [Add Comments](#add-comment) (Public)
 - [Update Comment](#update-comment) (Private)
 - [Delete Comment](#delete-comment) (Private)
 - [Search Threads](#search-threads) (Private)
 - [Get captcha token](#get-captcha-token) (Public)
-- [Check if he is alive](#check-if-he-is-alive) (Public**
+- [Check if he is alive](#check-if-he-is-alive) (Public)
 
 ### Authorization
 
-**Only privates***.
+**Only privates**.
 
 You need a `token` to be able to interact (You will find it in your `config.yaml`). Use a **header with Bearer authorization** on each request.
 
