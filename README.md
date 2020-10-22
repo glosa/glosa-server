@@ -28,6 +28,16 @@
 
 ---
 
+## Help me continue to improve
+
+<p align="center">
+  <a href="https://www.patreon.com/bePatron?u=22800322" rel="nofollow">
+    <img src="media/patreon.png" alt="Patreon" style="max-width:15rem;">
+  </a>
+</p>
+
+---
+
 ## Use it now
 
 - [How does it work?](#how-does-it-work)
@@ -380,7 +390,7 @@ Update a comment for ID.
 
 ##### Example
 
-Update comment from `https://glosa.example/api/v1/comments/1234`.
+Update comment with id `1234`.
 
 ``` sh
 curl -XPUT -H "Authorization: Bearer mysecret" -H "Content-type: application/json" -d '{
@@ -427,7 +437,7 @@ Delete a comment for ID.
 
 ##### Example
 
-Delete comment from `https://glosa.example/api/v1/comments/1234`.
+Delete comment with id `1234`.
 
 ``` sh
 curl -XDELETE -H "Authorization: Bearer mysecret" -H "Content-type: application/json" -d '{
