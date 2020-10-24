@@ -272,7 +272,7 @@ curl -XPOST -H "Content-type: application/json" -d '{
 	"parent": "",
 	"token": "VRJUOBBMTKFQUAFZOKJG",
 	"author": "Juana",
-    "email": "juana@my.email",
+	"email": "juana@my.email",
 	"message": "I like it very much.",
 	"thread":"https://glosa.example/best-SO/"
 }' 'http://localhost:4000/api/v1/comments/'
