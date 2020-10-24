@@ -142,7 +142,7 @@ Great 🎉. You already have your 🔥 own comment server 🔥.
 That's it, now you just have to test that it works properly.
 
 ``` sh
-curl localhost:4000/api/v1/captcha/
+curl localhost:4000/api/v1/captcha/?url=https://glosa.example/best-SO/'
 ```
 
 It will return a random token
@@ -330,7 +330,7 @@ curl 'http://localhost:4000/api/v1/captcha/?url=https://glosa.example/best-SO/'
 
 ``` json
 {
-    "token": ""
+    "error": "Need URL"
 }
 ```
 
