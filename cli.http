@@ -16,9 +16,9 @@ Content-Type: application/json
 
 {
         "parent": "",
-        "token": "TXERKQMRIVENCOSZTKEO",
-        "author": "Juana",
-        "email": "juana@my.email",
+        "token": "VZNQCXMROFBRFSVRTDJN",
+        "author": "Cid",
+        "email": "campeador@my.email",
         "message": "I like it very much.",
         "thread": "https://glosa.example/best-SO/"
 }

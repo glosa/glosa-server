@@ -20,14 +20,14 @@
         id-comment (database/add-comment (:parent my-json) (:author my-json) (:email my-json) (:message my-json) (:token my-json) (:thread my-json))]
     (notify/send-notify id-comment (:author my-json) (:message my-json) (:thread my-json))
     (render-JSON req {
-                      :added (nil? id-comment)
+                      :added (not (nil? id-comment))
                       } 200)))
 
 (defn get-captcha
   "Get token captcha"
   [req]
   (let [url (-> req :params :url)]
-    (render-JSON req (if (s/blank? url) {:error "Need URL"} (assoc {} :token (captcha/get-token (-> req :params :url)))))))
+    (render-JSON req (if (s/blank? url) {:error "Need URL"} (assoc {} :token (captcha/get-token url))))))
 
 (defn pong
 "Gives a simple message to record his abilities to play ping pong while he is alive"
