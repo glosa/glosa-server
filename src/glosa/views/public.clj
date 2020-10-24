@@ -17,10 +17,13 @@
   "Add new comment"
   [req]
   (let [my-json    (get-JSON req)
-        id-comment (database/add-comment (:parent my-json) (:author my-json) (:email my-json) (:message my-json) (:token my-json) (:thread my-json))]
-    (notify/send-notify id-comment (:author my-json) (:message my-json) (:thread my-json))
+        id-comment (database/add-comment (:parent my-json) (:author my-json) (:email my-json) (:message my-json) (:token my-json) (:thread my-json))
+        added?     (not (nil? id-comment))]
+    ;; Notify
+    (when added? (notify/send-notify id-comment (:author my-json) (:message my-json) (:thread my-json)))
+    ;; Response
     (render-JSON req {
-                      :added (not (nil? id-comment))
+                      :added added?
                       } 200)))
 
 (defn get-captcha
