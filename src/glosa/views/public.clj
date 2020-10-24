@@ -17,11 +17,12 @@
   [req]
   (let [my-json    (get-JSON req)
         id-comment (database/add-comment (:parent my-json) (:author my-json) (:email my-json) (:message my-json) (:token my-json) (:thread my-json))]
-    (if-not (nil? id-comment)
-      (do
-        (notify/send-notify id-comment (:author my-json) (:message my-json) (:thread my-json))
-        (render-JSON req {} 200))
-      (render-JSON req {} 401))))
+    (do
+      (notify/send-notify id-comment (:author my-json) (:message my-json) (:thread my-json))
+      (render-JSON req {
+                        :added (nil? id-comment)
+                        } 200))
+    ))
 
 (defn get-captcha
   "Get token captcha"

@@ -1,3 +1,15 @@
+# Add comment
+POST http://localhost:4000/api/v1/comments/
+Content-Type: application/json
+
+{
+        "parent": "",
+        "token": "HHCQXYXVLIIQCVCJPYJI",
+        "author": "Juana",
+    "email": "juana@my.email",
+        "message": "I like it very much.",
+        "thread":"https://glosa.example/best-SO/"
+}
 
 # All threads
 GET http://localhost:4000/api/v1/threads/search/pyTHon

@@ -282,7 +282,7 @@ curl -XPOST -H "Content-type: application/json" -d '{
 
 ``` json
 {
-    "status": 200
+    "added": true
 }
 ```
 
@@ -291,7 +291,7 @@ curl -XPOST -H "Content-type: application/json" -d '{
 
 ``` json
 {
-    "status": 401
+    "added": false
 }
 ```
 
