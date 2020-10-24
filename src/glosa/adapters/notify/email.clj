@@ -30,7 +30,7 @@
                                                                                                          {:from    (config :from)
                                                                                                           :to      [to]
                                                                                                           :subject (config :subject)
-                                                                                                          :body    [{:type    "text/html"
+                                                                                                          :body    [{:type    "text/html; charset=\"UTF-8\""
                                                                                                                      :content (s/render (slurp template-html-path) {:author  author
                                                                                                                                                                     :message message
                                                                                                                                                                     :thread  thread})}]}) nil))))))

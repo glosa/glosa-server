@@ -152,7 +152,7 @@ Great 🎉. You already have your 🔥 own comment server 🔥.
 That's it, now you just have to test that it works properly.
 
 ``` sh
-curl localhost:4000/api/v1/captcha/
+curl localhost:4000/api/v1/captcha/?url=https://glosa.example/best-SO/'
 ```
 
 It will return a random token
@@ -282,7 +282,7 @@ curl -XPOST -H "Content-type: application/json" -d '{
 	"parent": "",
 	"token": "VRJUOBBMTKFQUAFZOKJG",
 	"author": "Juana",
-    "email": "juana@my.email",
+	"email": "juana@my.email",
 	"message": "I like it very much.",
 	"thread":"https://glosa.example/best-SO/"
 }' 'http://localhost:4000/api/v1/comments/'
@@ -292,7 +292,7 @@ curl -XPOST -H "Content-type: application/json" -d '{
 
 ``` json
 {
-    "status": 200
+    "added": true
 }
 ```
 
@@ -301,7 +301,7 @@ curl -XPOST -H "Content-type: application/json" -d '{
 
 ``` json
 {
-    "status": 401
+    "added": false
 }
 ```
 
@@ -340,7 +340,7 @@ curl 'http://localhost:4000/api/v1/captcha/?url=https://glosa.example/best-SO/'
 
 ``` json
 {
-    "token": ""
+    "error": "Need URL"
 }
 ```
 
