@@ -27,7 +27,7 @@
 (defn rand-str
   "Generate random string"
   [len]
-  (string/join (repeatedly len #(char (+ (rand 26) 65)))))
+  (string/join (repeatedly len (fn [] (char (+ (rand 26) 65))))))
 
 (defn db-save
   "Save database"
@@ -38,9 +38,9 @@
 (defn clear-tokens-old
   "Clean tokens with more than one day"
   []
-  (let [now          (utils/get-unixtime-now)
-        nowMinus24h  (- now 86400)
-        clear-tokens (filter (fn [item] (> (item :createdAt) nowMinus24h)) @db)]
+  (let [now           (utils/get-unixtime-now)
+        now-minus-24h (- now 86400)
+        clear-tokens  (filter (fn [item] (> (item :createdAt) now-minus-24h)) @db)]
     (reset! db clear-tokens)
     (db-save @db)
     clear-tokens))

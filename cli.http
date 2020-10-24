@@ -1,14 +1,26 @@
+# Get token
+GET http://localhost:4000/api/v1/captcha/?url=https://glosa.example/best-SO/
+
+# Get token
+GET http://localhost:4000/api/v1/captcha/?url=
+
+# Get token
+GET http://localhost:4000/api/v1/captcha/
+
+# Get token
+GET http://localhost:4000/api/v1/captcha/?other=
+
 # Add comment
 POST http://localhost:4000/api/v1/comments/
 Content-Type: application/json
 
 {
         "parent": "",
-        "token": "HHCQXYXVLIIQCVCJPYJI",
+        "token": "TXERKQMRIVENCOSZTKEO",
         "author": "Juana",
-    "email": "juana@my.email",
+        "email": "juana@my.email",
         "message": "I like it very much.",
-        "thread":"https://glosa.example/best-SO/"
+        "thread": "https://glosa.example/best-SO/"
 }
 
 # All threads
