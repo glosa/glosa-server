@@ -11,7 +11,7 @@
 - **Opensource**.
 - **Very fast**, responses between 5ms and 15ms on average.
 - Easy to integrate with **static pages**.
-- **APP for desktop, mobile and terminal** to manage comments: Delete, update, reply...
+- **PWA for desktop and mobile or terminal** to manage comments: Delete, update, find...
 - **Easy to import** from Disqus.
 - **No database**, everything is stored in a JSON.
 - Configuration in a **simple YAML**.
