@@ -18,7 +18,8 @@
 (defroutes private
   ;; Urls public pages
   (context api-prefix []
-           (GET "/threads/search/:query" [] view-private/get-search-threads)
+           (POST "/token/check/" [] view-private/check-token)
+           (POST "/threads/search/:query" [] view-private/get-search-threads)
            (PUT "/comments/" [] view-private/update-comment)
            (DELETE "/comments/" [] view-private/delete-comment)))
 

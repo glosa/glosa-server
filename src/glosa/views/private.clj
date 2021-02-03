@@ -19,6 +19,11 @@
   [req]
   (response (assoc req :WWW-Authenticate "Basic realm=\"Wrong token\"") "" 401 ""))
 
+(defn check-token
+  "Check if valid token"
+  [req]
+  (render-JSON req {:valid (check-bearer-token req)}))
+
 (defn get-search-threads
   "Search threads"
   [req]
@@ -27,16 +32,16 @@
     (response-401 req)))
 
 (defn update-comment
-  "Update one comment"
-  [req]
-  (let [data    (get-JSON req)
-        id      (:id data)
-        author  (:author data)
-        email   (:email data)
-        message (:message data)]
-    (if (check-bearer-token req)
-      (render-JSON req {:updated (database/update-comment id author email message) :id (bigint id)})
-      (response-401 req))))
+"Update one comment"
+[req]
+(let [data    (get-JSON req)
+      id      (:id data)
+      author  (:author data)
+      email   (:email data)
+      message (:message data)]
+  (if (check-bearer-token req)
+    (render-JSON req {:updated (database/update-comment id author email message) :id (bigint id)})
+    (response-401 req))))
 
 (defn delete-comment
 "Delete one comment"
