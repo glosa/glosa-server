@@ -178,6 +178,7 @@ The first time Glosa is run it will create an HTML template with the name `templ
 - [Search Threads](#search-threads) (Private)
 - [Get captcha token](#get-captcha-token) (Public)
 - [Check if he is alive](#check-if-he-is-alive) (Public)
+- [Check if token is valid](#check-token) (Public)
 
 ### Authorization
 
@@ -369,6 +370,41 @@ curl 'http://localhost:4000/api/v1/ping/'
 }
 ```
 
+#### Check if token is valid
+
+**Method**: `POST`
+
+``` sh
+/api/v1/token/check/
+```
+
+| Param | Value  | Description |
+|---|---|---|
+| url  | string | Page where you want to save the comment. |
+
+##### Example
+
+``` sh
+curl -XPOST -H "Authorization: Bearer mysecret" 'http://localhost:4000/api/v1/token/check/'
+```
+
+##### Success response
+
+``` json
+{
+    "valid": true
+}
+```
+
+##### Fail response
+
+
+``` json
+{
+    "valid": false
+}
+```
+
 ### Private
 
 #### Update Comment
@@ -468,10 +504,10 @@ curl -XDELETE -H "Authorization: Bearer mysecret" -H "Content-type: application/
 
 Search for all urls containing a certain string ignoring uppercase. [Authorization required](#authorization).
 
-**Method**: `GET`
+**Method**: `POST`
 
 ``` sh
-/api/threads/search/{query}
+/api/v1/threads/search/{query}
 ```
 
 | Param | Value | Description |
@@ -483,7 +519,7 @@ Search for all urls containing a certain string ignoring uppercase. [Authorizati
 Search all threads with  `tadam`.
 
 ``` sh
-curl -H "Authorization: Bearer mysecret" 'http://localhost:4000/api/threads/search/tadam'
+curl -XPOST -H "Authorization: Bearer mysecret" 'http://localhost:4000/api/v1/threads/search/tadam'
 ```
 
 ##### Success response
