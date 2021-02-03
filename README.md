@@ -171,7 +171,7 @@ The first time Glosa is run it will create an HTML template with the name `templ
 - [Search Threads](#search-threads) (Private)
 - [Get captcha token](#get-captcha-token) (Public)
 - [Check if he is alive](#check-if-he-is-alive) (Public)
-- [Check if token is valid](#check-token) (Public)
+- [Check if token is valid](#check-if-token-is-valid) (Public)
 
 ### Authorization
 
