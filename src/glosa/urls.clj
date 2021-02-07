@@ -13,12 +13,12 @@
            (GET "/comments/" [] view-public/get-comments)
            (POST "/comments/" [] view-public/add-comment)
            (GET "/captcha/" [] view-public/get-captcha)
+           (POST "/token/check/" [] view-public/check-token)
            (GET "/ping/" [] view-public/pong)))
 
 (defroutes private
   ;; Urls public pages
   (context api-prefix []
-           (POST "/token/check/" [] view-private/check-token)
            (POST "/threads/search/:query" [] view-private/get-search-threads)
            (PUT "/comments/" [] view-private/update-comment)
            (DELETE "/comments/" [] view-private/delete-comment)))
