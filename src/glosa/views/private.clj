@@ -1,28 +1,15 @@
-;;;; Views public web
+;;;; Views privates
 (ns glosa.views.private
   (:require
-   [glosa.config :refer [config]]
-   [clojure.string :as s]
+   [glosa.models.authorization :refer [check-bearer-token]]
    [tadam.templates :refer [render-JSON]]
    [tadam.responses :refer [response]]
-   [tadam.utils :refer [get-JSON get-header]]
+   [tadam.utils :refer [get-JSON]]
    [glosa.ports.database :as database]))
-
-(defn check-bearer-token
-  [req]
-  (let [authorization-raw    (or (get-header req "authorization") "")
-        authorization-bearer (s/trim (s/replace authorization-raw #"^Bearer " ""))
-        token                (:token config)]
-    (= authorization-bearer token)))
 
 (defn response-401
   [req]
   (response (assoc req :WWW-Authenticate "Basic realm=\"Wrong token\"") "" 401 ""))
-
-(defn check-token
-  "Check if valid token"
-  [req]
-  (render-JSON req {:valid (check-bearer-token req)}))
 
 (defn get-search-threads
   "Search threads"

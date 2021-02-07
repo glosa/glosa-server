@@ -1,12 +1,15 @@
 ;;;; Views public web
 (ns glosa.views.public
   (:require
+   [glosa.models.authorization :refer [check-bearer-token]]
    [tadam.templates :refer [render-JSON]]
    [tadam.utils :refer [get-JSON]]
    [glosa.ports.database :as database]
    [glosa.ports.notify :as notify]
    [glosa.ports.captcha :as captcha]
    [clojure.string :as s]))
+
+;; Commets
 
 (defn get-comments
   "All comments from url"
@@ -25,6 +28,7 @@
     (render-JSON req {
                       :added added?
                       } 200)))
+;; Token
 
 (defn get-captcha
   "Get token captcha"
@@ -32,10 +36,17 @@
   (let [url (-> req :params :url)]
     (render-JSON req (if (s/blank? url) {:error "Need URL"} (assoc {} :token (captcha/get-token url))))))
 
+(defn check-token
+  "Check if valid token for Admin"
+  [req]
+  (render-JSON req {:valid (check-bearer-token req)}))
+
+;; Status
+
 (defn pong
-"Gives a simple message to record his abilities to play ping pong while he is alive"
-[req]
-(render-JSON req {:ping "pong"}))
+  "Gives a simple message to record his abilities to play ping pong while he is alive"
+  [req]
+  (render-JSON req {:ping "pong"}))
 
 (defn status-404
 "Page 404"

@@ -1,3 +1,6 @@
+# Get thread
+GET http://localhost:4000/api/v1/comments/?url=https://programadorwebvalencia.com/javascript-ejemplo-carrito-de-compra/
+
 # Get token
 GET http://localhost:4000/api/v1/captcha/?url=https://glosa.example/best-SO/
 
@@ -16,7 +19,7 @@ Content-Type: application/json
 
 {
         "parent": "",
-        "token": "SGPSEIBBGBEPWVECXKBA",
+        "token": "ZOTJRWSPRZFQUHPHXZAV",
         "author": "El Cid",
         "email": "campeador@my.email",
         "message": "I like it very much.",
