@@ -11,8 +11,8 @@
 - **Opensource**.
 - **Very fast**, responses between 5ms and 15ms on average.
 - Easy to integrate with **static pages**.
-- **PWA for desktop and mobile or terminal** to manage comments: Delete, update, find...
-- **Easy to import** from Disqus.
+- **[PWA Admin for desktop and mobile](https://glosa.github.io/glosa-admin/#/) or [terminal](#terminal-cli)** to manage comments: Delete, update, find...
+- Easy to **[import from Disqus](https://github.com/glosa/glosa-disqus-import)**.
 - **No database**, everything is stored in a JSON.
 - Configuration in a **simple YAML**.
 - **Captcha** system included.
@@ -20,11 +20,15 @@
 - **Users are notified** by email if they are answered.
 - **Multisite**: Single server for multiple websites.
 
-## [Video Demo](https://cdn.jsdelivr.net/gh/glosa/glosa-static-integration/media/demo.mp4)
+## Resources
 
-## [Example connect with your static site (only HTML and Javascript)](https://github.com/glosa/glosa-static-integration)
+### [Template static site (only HTML and Javascript)](https://github.com/glosa/glosa-static-integration)
 
-## [Import your comments from Disqus](https://github.com/glosa/glosa-disqus-import)
+### [Import your comments from Disqus](https://github.com/glosa/glosa-disqus-import)
+
+### [PWA Admin](https://github.com/glosa/glosa-admin)
+
+### [Video Demo](https://cdn.jsdelivr.net/gh/glosa/glosa-static-integration/media/demo.mp4)
 
 ---
 
