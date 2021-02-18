@@ -26,6 +26,11 @@ Content-Type: application/json
         "thread": "https://glosa.example/best-SO/"
 }
 
+# Latest
+POST http://localhost:4000/api/v1/comments/latest/1
+Content-Type: application/json
+Authorization: Bearer mysecret
+
 # All threads
 GET http://localhost:4000/api/v1/threads/search/pyTHon
 Content-Type: application/json

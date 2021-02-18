@@ -19,7 +19,7 @@
 (defroutes private
   ;; Urls public pages
   (context api-prefix []
-           (POST "/comments/latest" [] view-private/get-latest-comments)
+           (POST "/comments/latest/:pag" [] view-private/get-latest-comments)
            (POST "/threads/search/:query" [] view-private/get-search-threads)
            (PUT "/comments/" [] view-private/update-comment)
            (DELETE "/comments/" [] view-private/delete-comment)))

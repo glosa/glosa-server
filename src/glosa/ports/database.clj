@@ -12,6 +12,11 @@
   [url]
   (adapter/get-comments url))
 
+(defn get-latest-comments
+  "All latest comments"
+  [pag]
+  (adapter/get-latest-comments pag))
+
 (defn get-threads-search
   "Find threads from name"
   ([]
