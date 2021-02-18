@@ -8,6 +8,7 @@
 
 (def db (atom {}))
 (def db-path "db.json")
+(def per_page 10)
 
 (defn db-save
   "Save database"
@@ -50,6 +51,14 @@
          (s/upper-case (:thread comment))
          (s/upper-case query)))
      (get-all-threads))))
+
+(defn get-latest-comments
+  "All latest comments"
+  [pag]
+  (let [my-pag    (Integer/parseInt pag)
+        start-pag (* per_page (if (> my-pag 1) (dec my-pag) 0))
+        end-pag   (+ start-pag per_page)]
+    (subvec (vec (sort-by :createdAt (fn [first second] (> first second)) @db)) start-pag end-pag)))
 
 (defn get-comments
   "Find comments from url. Sort by createdAt and Add deep value"

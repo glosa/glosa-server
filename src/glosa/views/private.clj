@@ -15,7 +15,7 @@
   "All latest comments"
   [req]
   (if (check-bearer-token req)
-    (render-JSON req (database/get-latest-comments))
+    (render-JSON req (database/get-latest-comments (-> req :params :pag)))
     (response-401 req)))
 
 (defn get-search-threads
