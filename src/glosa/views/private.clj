@@ -11,6 +11,13 @@
   [req]
   (response (assoc req :WWW-Authenticate "Basic realm=\"Wrong token\"") "" 401 ""))
 
+(defn get-latest-comments
+  "All latest comments"
+  [req]
+  (if (check-bearer-token req)
+    (render-JSON req (database/get-latest-comments))
+    (response-401 req)))
+
 (defn get-search-threads
   "Search threads"
   [req]
