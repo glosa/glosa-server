@@ -165,6 +165,7 @@ The first time Glosa is run it will create an HTML template with the name `templ
 
 
 - [Get Comments](#get-comments) (Public)
+- [Last comments](#last-comments) (Private)
 - [Add Comments](#add-comment) (Public)
 - [Update Comment](#update-comment) (Private)
 - [Delete Comment](#delete-comment) (Private)
@@ -235,6 +236,68 @@ curl 'http://localhost:4000/api/v1/comments/?url=https://glosa.example/best-SO/'
         "email": "lucia@my.email",
         "message": "I love the article."
     }
+]
+```
+
+##### Fail response
+
+``` json
+[]
+```
+
+#### Last Comments
+
+Get the last 10 comments sorted by date. A pager is available.
+
+**Method**: `POST`
+
+``` sh
+/api/v1/comments/latest/{page}
+```
+
+| Param | Value  | Description |
+|---|---|---|
+| page  | number | Paginator. |
+
+##### Example
+
+I get the last 10 comments.
+
+``` sh
+curl 'http://localhost:4000/api/v1/comments/latest/1'
+```
+
+Last comments between 30 and 40.
+
+``` sh
+curl 'http://localhost:4000/api/v1/comments/latest/3'
+```
+
+##### Success response
+
+``` json
+[
+    {
+        "id": 4812781236,
+        "parent": "",
+        "deep": 0,
+        "createdAt": 1584266634,
+        "thread": "https://glosa.example/best-SO/",
+        "author": "Lexar",
+        "email": "",
+        "message": "Do you use Glosa too? It's an amazing technology."
+    },
+    {
+        "id": 4812781237,
+        "parent": "4812781236",
+        "deep": 1,
+        "createdAt": 1584266746,
+        "thread": "https://glosa.example/best-SO/",
+        "author": "Lucia",
+        "email": "lucia@my.email",
+        "message": "I love the article."
+    }
+    ...
 ]
 ```
 
