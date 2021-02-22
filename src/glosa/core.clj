@@ -13,7 +13,7 @@
       (wrap-defaults (assoc-in site-defaults [:security :anti-forgery] false))
       (wrap-cors
         :access-control-allow-origin [(re-pattern (if (config :debug) ".*" (config :domain-cli)))]
-        :access-control-allow-methods [:get :post])
+        :access-control-allow-methods [:get :post :put :delete])
       (#(if (config :debug) (wrap-reload %) %))))
 
 (defn -main [& args]

@@ -521,7 +521,7 @@ Delete a comment for ID. [Authorization required](#authorization).
 **Method**: `DELETE`
 
 ``` sh
-/api/v1/comments/
+/api/v1/comments/{id}
 ```
 
 | Param | Value | Description |
@@ -533,9 +533,7 @@ Delete a comment for ID. [Authorization required](#authorization).
 Delete comment from `https://glosa.example/api/v1/comments/1234`.
 
 ``` sh
-curl -XDELETE -H "Authorization: Bearer mysecret" -H "Content-type: application/json" -d '{
-    "id": 1234
-}' 'http://localhost:4000/api/v1/comments/
+curl -XDELETE -H "Authorization: Bearer mysecret" -H "Content-type: application/json" http://localhost:4000/api/v1/comments/1234
 ```
 
 ##### Success response

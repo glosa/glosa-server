@@ -38,10 +38,10 @@
     (response-401 req))))
 
 (defn delete-comment
-"Delete one comment"
-[req]
-(let [id (:id (get-JSON req))]
-  (if (check-bearer-token req)
-    (render-JSON req {:deleted (database/delete-comment id) :id (bigint id)})
-    (response-401 req))))
+  "Delete one comment"
+  [req]
+  (let [id (-> req :params :id)]
+    (if (check-bearer-token req)
+      (render-JSON req {:deleted (database/delete-comment id) :id (bigint id)})
+      (response-401 req))))
 
