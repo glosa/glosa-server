@@ -6,6 +6,8 @@
    <strong >Clone of Disqus, but faster, Opensource and sexy.</strong>
 </p>
 
+[![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
+
 ## Amazing reasons to use it
 
 - **Opensource**.
